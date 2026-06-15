@@ -1,0 +1,62 @@
+html<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Advanced Product Showcase</title>
+  <script src="https://tailwindcss.com"></script>
+</head>
+<body class="bg-[#0b0c10] text-[#c5c6c7] font-sans antialiased selection:bg-[#66fcf1] selection:text-black">
+
+  <!-- Navigation Bar -->
+  <nav class="border-b border-[#1f2833] px-6 py-4 flex justify-between items-center bg-[#0b0c10]/90 backdrop-blur sticky top-0 z-50">
+    <div class="text-xl font-black tracking-widest text-white">NEXUS // SYS</div>
+    <div class="space-x-8 text-sm uppercase tracking-wider font-semibold">
+      <a href="#" class="text-[#66fcf1] hover:text-white transition">Systems</a>
+      <a href="#" class="hover:text-[#66fcf1] transition">Capabilities</a>
+      <a href="#" class="hover:text-[#66fcf1] transition">Deployment</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="relative h-[80vh] flex items-center justify-center overflow-hidden border-b border-[#1f2833]">
+    <!-- Placeholder for looping tech/hardware video or 3D canvas -->
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#0b0c10] z-10"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#1f2833_1px,transparent_1px)] [background-size:16px_16px] opacity-30"></div>
+    
+    <div class="relative z-20 text-center max-w-3xl px-4">
+      <span class="text-[#66fcf1] uppercase tracking-[0.3em] text-xs font-bold block mb-3">// NEXT-GENERATION AUTONOMY</span>
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6 uppercase">Autonomous Vector Platform</h1>
+      <p class="text-base md:text-lg text-[#8950fc] text-gray-400 max-w-xl mx-auto font-mono">Advanced software integration for real-time edge processing and environment mapping.</p>
+    </div>
+  </header>
+
+  <!-- Product Specifications Grid -->
+  <section class="max-w-7xl mx-auto px-6 py-20">
+    <h2 class="text-2xl font-bold tracking-wider uppercase text-white mb-12 border-l-4 border-[#66fcf1] pl-4">System Specifications</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Spec Card 1 -->
+      <div class="border border-[#1f2833] p-6 bg-[#1f2833]/20 hover:border-[#66fcf1]/50 transition-all duration-300 group">
+        <div class="text-xs font-mono text-[#66fcf1] mb-2">[ 01 / PROPULSION ]</div>
+        <h3 class="text-lg font-bold text-white uppercase mb-4 group-hover:text-[#66fcf1] transition-colors">Quantum Drive</h3>
+        <p class="text-sm leading-relaxed text-gray-400">Zero-emission magnetic vectoring built for continuous operation in atmospheric anomalies.</p>
+      </div>
+
+      <!-- Spec Card 2 -->
+      <div class="border border-[#1f2833] p-6 bg-[#1f2833]/20 hover:border-[#66fcf1]/50 transition-all duration-300 group">
+        <div class="text-xs font-mono text-[#66fcf1] mb-2">[ 02 / SENSORS ]</div>
+        <h3 class="text-lg font-bold text-white uppercase mb-4 group-hover:text-[#66fcf1] transition-colors">LiDAR Mesh Network</h3>
+        <p class="text-sm leading-relaxed text-gray-400">Solid-state multi-band array processing 12 million points per second for absolute situational clarity.</p>
+      </div>
+
+      <!-- Spec Card 3 -->
+      <div class="border border-[#1f2833] p-6 bg-[#1f2833]/20 hover:border-[#66fcf1]/50 transition-all duration-300 group">
+        <div class="text-xs font-mono text-[#66fcf1] mb-2">[ 03 / FRAMEWORK ]</div>
+        <h3 class="text-lg font-bold text-white uppercase mb-4 group-hover:text-[#66fcf1] transition-colors">Edge AI Core</h3>
+        <p class="text-sm leading-relaxed text-gray-400">Localized neural inference architecture functioning completely independently of cloud connectivity.</p>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
