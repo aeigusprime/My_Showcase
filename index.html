@@ -145,6 +145,28 @@
     .badge-active   { background: rgba(102,252,241,0.08); color: #a0faf5; border: 1px solid rgba(102,252,241,0.2); }
     .badge-research { background: rgba(255,200,80,0.08);  color: #f5c842; border: 1px solid rgba(255,200,80,0.2); }
 
+    /* PROVEN & VALIDATED badge */
+    .badge-proven {
+      background: rgba(102,252,241,0.12);
+      color: #66fcf1;
+      border: 1px solid rgba(102,252,241,0.6);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 11px;
+      letter-spacing: 0.16em;
+      animation: proven-pulse 2.2s ease-in-out infinite;
+    }
+    @keyframes proven-pulse {
+      0%,100% {
+        box-shadow: 0 0 0 0 rgba(102,252,241,0);
+        border-color: rgba(102,252,241,0.45);
+      }
+      50% {
+        box-shadow: 0 0 14px 4px rgba(102,252,241,0.35), 0 0 5px 1px rgba(137,80,252,0.15);
+        border-color: rgba(102,252,241,0.9);
+      }
+    }
+
     /* Primary Button */
     .btn-primary {
       background: linear-gradient(135deg, rgba(137,80,252,0.85), rgba(80,40,200,0.85));
@@ -303,7 +325,7 @@
                 By accessing this portal, the recipient agrees to hold all disclosed information in strict confidence.
                 No part of this material may be reproduced, distributed, or disclosed to any third party without the
                 express prior written consent of KPS. Breach may result in immediate injunctive relief and/or criminal
-                liability under applicable federal statutes.
+                liability under applicale federal statutes.
               </p>
             </div>
           </div>
@@ -342,7 +364,7 @@
   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
     <div class="flex items-center gap-3">
       <div class="w-7 h-7 border border-[#66fcf1]/40 flex items-center justify-center">
-        <div class="w-3 h-3 bg-[#66fcf1]" style="clip-path:polygon(50% 0%,100% 100%,0% 100%)"></div>
+        <div class="w-3 h-3 bg-[#66fcf1]" style="clip-path:polygon(50% 0%,100% 100%,  0% 100%)"></div>
       </div>
       <span class="orbitron text-white text-sm font-bold tracking-wider">KPS</span>
       <span class="text-[#2d3748] text-xs mx-2">&#x7c;</span>
@@ -381,7 +403,7 @@
       <div class="section-label mb-3">// UPCOMING TECHNOLOGY FRAMEWORKS</div>
       <h2 class="orbitron text-white text-2xl font-bold uppercase tracking-wide">Advanced Systems Pipeline</h2>
       <p class="text-[#4a5568] text-xs mono mt-2">
-        SELECT * FROM kps_tech WHERE status IN ('PATENT_PENDING','IN_DEVELOPMENT') ORDER BY priority DESC
+        SELECT * FROM kps_tech WHERE status IN ('PATENT-PENDING','IN_DEVELOPMENT') ORDER BY priority DESC
       </p>
     </div>
     <div class="mono text-xs text-[#4a5568] text-right">
@@ -425,7 +447,7 @@
       </div>
       <div class="mt-5 pt-4 border-t border-[#1a2035] flex items-center justify-between">
         <div class="mono text-[#4a5568] text-[10px] tracking-widest">KPS &mdash; NDL-1 &bull; REV 1.0</div>
-        <div class="badge badge-cyan">CENTERPIECE ASSET</div>
+        <div class="badge badge-cyan">CENTERPEQCE ASSET</div>
       </div>
     </div>
 
@@ -434,7 +456,7 @@
       <div class="flex items-start justify-between mb-5 flex-wrap gap-2">
         <div>
           <div class="mono text-[#8950fc] text-[10px] tracking-widest uppercase mb-1">Program ID</div>
-          <div class="orbitron text-white text-sm font-bold tracking-wide">PROJECT LPA-&#x3a9;</div>
+          <div class="orbitron text-white text-sm font-bold tracking-wide">PROH¥D5 LPAT-&#x3a9;</div>
         </div>
         <span class="badge badge-patent-hero">&#x25c6; PATENT PENDING</span>
       </div>
@@ -469,175 +491,61 @@
       </div>
     </div>
 
-    <!-- CARD 03: Kinetic Rail Beam Projector -->
-    <div class="tech-card p-6">
-      <div class="flex items-start justify-between mb-5">
-        <div>
-          <div class="mono text-[#66fcf1] text-[10px] tracking-widest uppercase mb-1">Program ID</div>
-          <div class="orbitron text-white text-sm font-bold tracking-wide">PROJECT KRB-X1</div>
-        </div>
-        <span class="badge badge-active">IN DEVELOPMENT</span>
-      </div>
-      <div class="orbitron text-[#66fcf1] text-base font-bold mb-5 leading-snug">Kinetic Rail Beam Projector</div>
-      <div class="space-y-0">
-        <div class="spec-row">
-          <div class="spec-key">Propulsion</div>
-          <div class="spec-val">Electromagnetic rail-launch system &mdash; 8,200+ m/s terminal velocity via staged capacitor discharge array.</div>
-        </div>
-        <div class="spec-row">
-          <div class="spec-key">Structural Integrity</div>
-          <div class="spec-val">Tungsten-carbide penetrator core with ablative ceramic heat shield composite.</div>
-        </div>
-        <div class="spec-row">
-          <div class="spec-key">Command &amp; Control</div>
-          <div class="spec-val">Autonomous trajectory correction with inertial + GPS fusion targeting.</div>
-        </div>
-      </div>
-    </div>
 
-    <!-- CARD 04: Plasma Arc Shield Matrix -->
-    <div class="tech-card p-6">
-      <div class="flex items-start justify-between mb-5">
-        <div>
-          <div class="mono text-[#8950fc] text-[10px] tracking-widest uppercase mb-1">Program ID</div>
-          <div class="orbitron text-white text-sm font-bold tracking-wide">PROJECT PSM-7</div>
-        </div>
-        <span class="badge badge-research">IN RESEARCH</span>
-      </div>
-      <div class="orbitron text-[#8950fc] text-base font-bold mb-5 leading-snug">Plasma Arc Shield Matrix</div>
-      <div class="space-y-0">
-        <div class="spec-row">
-          <div class="spec-key">Mechanism</div>
-          <div class="spec-val">Ionized plasma barrier at 15,000&deg;K &mdash; intercepts and ablates projectile threats before hull contact.</div>
-        </div>
-        <div class="spec-row">
-          <div class="spec-key">Structural Integrity</div>
-          <div class="spec-val">Magnetohydrodynamic field anchoring with boron-nitride containment coil wrap.</div>
-        </div>
-        <div class="spec-row">
-          <div class="spec-key">Power Source</div>
-          <div class="spec-val">Compact thorium-cycle reactor with millisecond surge capacity.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CARD 05: Adaptive Lattice Armor -->
-    <div class="tech-card p-6">
-      <div class="flex items-start justify-between mb-5">
-        <div>
-          <div class="mono text-[#66fcf1] text-[10px] tracking-widest uppercase mb-1">Program ID</div>
-          <div class="orbitron text-white text-sm font-bold tracking-wide">PROJECT ALA-3</div>
-        </div>
-        <span class="badge badge-active">PROTOTYPE</span>
-      </div>
-      <div class="orbitron text-[#66fcf1] text-base font-bold mb-5 leading-snug">Adaptive Lattice Armor System</div>
-      <div class="space-y-0">
-        <div class="spec-row">
-          <div class="spec-key">Mechanism</div>
-          <div class="spec-val">Piezoelectric metamaterial panels re-orient microstructure in &lt;4ms on impact signal, distributing energy across the lattice.</div>
-        </div>
-        <div class="spec-row">
-          <div class="spec-key">Structural Integrity</div>
-          <div class="spec-val">Graphene-aerogel sandwich composite with self-healing polymer matrix interface.</div>
-        </div>
-        <div class="spec-row">
-          <div class="spec-key">Command &amp; Control</div>
-          <div class="spec-val">Embedded MEMS sensor array with onboard FPGA real-time lattice reconfiguration.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CARD 06: Mercury Magneto Hydrogen Spear (HIGH IMPACT) -->
-    <div class="tech-card high-impact p-6">
+    <!-- CARD: Navier-Stokes Laminar Supersolid Armor -->
+    <div class="tech-card high-impact p-6" style="border-color:rgba(102,252,241,0.35);">
       <div class="flex items-start justify-between mb-5 flex-wrap gap-2">
         <div>
-          <div class="mono text-[#8950fc] text-[10px] tracking-widest uppercase mb-1">Program ID</div>
-          <div class="orbitron text-white text-sm font-bold tracking-wide">PROJECT MAG-H</div>
+          <div class="mono text-[#66fcf1] text-[10px] tracking-widest uppercase mb-1">Program ID</div>
+          <div class="orbitron text-white text-sm font-bold tracking-wide">PROJECT LAMINAR-S</div>
         </div>
-        <span class="badge badge-patent">&#x25c6; PATENT PENDING</span>
+        <div class="flex flex-col items-end gap-2">
+          <span class="badge badge-patent-hero">&#x25c6; PATENT PENDING</span>
+          <span class="badge badge-proven">&#x2713; PROVEN &amp; VALIDATED</span>
+        </div>
       </div>
-      <div class="orbitron mb-1 font-black text-base leading-snug" style="background:linear-gradient(90deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
-        Mercury Magneto<br/>Hydrogen Spear
+      <div class="orbitron mb-1 font-black text-base leading-snug" style="background:linear-gradient(90deg,var(--cyan),var(--violet),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+        Navier-Stokes Laminar<br/>Supersolid Armor
       </div>
-      <div class="mono text-[#4a5568] text-[10px] tracking-widest mb-5">ZERO-POINT GRAVITY DRIVE PLATFORM</div>
+      <div class="mono text-[#4a5568] text-[10px] tracking-widest mb-5">LAMINAR SUPERSOLID HULL INTEGRITY SYSTEM</div>
       <div class="space-y-0">
         <div class="spec-row">
-          <div class="spec-key">Propulsion</div>
-          <div class="spec-val">Mercury Magneto Hydrogen Drive System &mdash; creates Zero-Point Gravity via 50,000+ RPM fluid rotation.</div>
+          <div class="spec-key">Core Tech</div>
+          <div class="spec-val">Laminar Supersolid Hull Integrity &mdash; utilizing Navier-Stokes mathematical resolutions for kinetic energy dissipation and structural fluidity.</div>
         </div>
         <div class="spec-row">
-          <div class="spec-key">Structural Integrity</div>
-          <div class="spec-val">Advanced heat-reflective/absorptive hull composite (Palladium, Germanium, and Uranium skin).</div>
+          <div class="spec-key">Governing Constant</div>
+          <div class="spec-val">The Law of Persistent Amplitudes &mdash; governing atomic frequency persistence across all high-energy impact events.</div>
         </div>
         <div class="spec-row">
-          <div class="spec-key">Command &amp; Control</div>
-          <div class="spec-val">Integrated AI/Conscience system with real-time neural coupling interface.</div>
+          <div class="spec-key">Core Mechanism</div>
+          <div class="spec-val">Frequency lock of the atomic lattice during high-frequency harmonics &mdash; sustaining coherence under maximum stress conditions.</div>
         </div>
         <div class="spec-row">
-          <div class="spec-key">Pilot Protection</div>
-          <div class="spec-val">Radiation-shielded cockpit utilizing specialized gold-silver mesh weave.</div>
+          <div class="spec-key">Herron Operator</div>
+          <div class="spec-val"><span class="axiom">&#x3a9;(1.43, A<sub>p</sub>)</span> &mdash; integrating harmonic operation with mathematical distribution across the structural lattice.</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Result</div>
+          <div class="spec-val">Synchronization into a honeycomb lattice &mdash; creating a new state of matter: the laminar supersolid.</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Performance</div>
+          <div class="spec-val">Immune to ballistic and explosive force; provides resonant stabilization to prevent structural collapse in bridges and buildings.</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Defensive Rating</div>
+          <div class="spec-val">Classified / Beyond-Legacy &mdash; Impenetrable structural matrix.</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Application</div>
+          <div class="spec-val">Aerial Supremacy Craft, Sub-surface vessels, and National Strategic Infrastructure.</div>
         </div>
       </div>
       <div class="mt-5 pt-4 border-t border-[#1a2035] flex items-center justify-between">
-        <div class="mono text-[#4a5568] text-[10px] tracking-widest">KPS &mdash; MAG-H &bull; REV 1.0</div>
-        <div class="badge badge-violet">HIGH IMPACT</div>
+        <div class="mono text-[#4a5568] text-[10px] tracking-widest">KPS &mdash; LAMINAR-S &bull; REV 1.0</div>
+        <div class="badge badge-cyan">STRUCTURAL BREAKTHROUGH</div>
       </div>
     </div>
 
-  </div>
-
-  <div class="mt-8 mono text-[#2d3748] text-[10px] text-center tracking-widest">
-    DISPLAYING 6 OF 50+ REGISTERED KPS FRAMEWORKS &mdash; ACCESS TIER: RESTRICTED &mdash; KPS-TECH-INDEX REV 2026.07
-  </div>
-</section>
-
-<!-- CAPABILITIES BAR -->
-<section id="capabilities" class="border-t border-[#1a2035] relative z-10">
-  <div class="max-w-7xl mx-auto px-6 py-16">
-    <div class="section-label mb-10">// CORE CAPABILITIES</div>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-      <div class="kps-card p-5">
-        <div class="text-[#66fcf1] text-2xl font-black orbitron mb-1">&gt;50K</div>
-        <div class="mono text-[10px] text-[#4a5568] tracking-widest uppercase">RPM Fluid Rotation</div>
-        <div class="text-xs text-gray-500 mt-2">Zero-Point Gravity induction threshold</div>
-      </div>
-      <div class="kps-card p-5">
-        <div class="text-[#8950fc] text-2xl font-black orbitron mb-1">50+</div>
-        <div class="mono text-[10px] text-[#4a5568] tracking-widest uppercase">Active Patents</div>
-        <div class="text-xs text-gray-500 mt-2">Pending or filed as of 2026</div>
-      </div>
-      <div class="kps-card p-5">
-        <div class="text-[#66fcf1] text-2xl font-black orbitron mb-1">4x</div>
-        <div class="mono text-[10px] text-[#4a5568] tracking-widest uppercase">Hull Composites</div>
-        <div class="text-xs text-gray-500 mt-2">Pd / Ge / U / Au-Ag shielding tiers</div>
-      </div>
-      <div class="kps-card p-5">
-        <div class="text-[#8950fc] text-2xl font-black orbitron mb-1">AI/&lt;1ms</div>
-        <div class="mono text-[10px] text-[#4a5568] tracking-widest uppercase">Neural Coupling</div>
-        <div class="text-xs text-gray-500 mt-2">Real-time pilot-system integration latency</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="border-t border-[#1a2035] relative z-10">
-  <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-    <div class="mono text-[#2d3748] text-[10px] tracking-widest">
-      &copy; 2026 KINETIC PERIMETER SYSTEMS LLC &mdash; ALL RIGHTS RESERVED &mdash; ITAR CONTROLLED
-    </div>
-    <div class="mono text-[#2d3748] text-[10px] tracking-widest">KPS-PORTAL-v2.0 &bull; McMinnville, TN</div>
-  </div>
-</footer>
-
-<script>
-  function closeNDA() {
-    var m = document.getElementById('ndaModal');
-    if (m) m.classList.add('hidden');
-  }
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeNDA();
-  });
-</script>
-</body>
-</html>
+    <!-- CARD 03: Kinetic Rail Beam Projector -->
