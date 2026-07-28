@@ -29,12 +29,12 @@
     .orbitron { font-family: 'Orbitron', monospace; }
     .mono     { font-family: 'Share Tech Mono', monospace; }
 
-    /* ── Scrollbar ──────────────────────────────────── */
+    /* scrollbar */
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
-    /* ── NDA Modal ──────────────────────────────────── */
+    /* NDA Modal */
     #ndaModal {
       position: fixed; inset: 0; z-index: 9999;
       background: rgba(4,6,14,0.93);
@@ -53,7 +53,7 @@
     }
     .modal-scroll { overflow-y: auto; }
 
-    /* ── KPS Card ───────────────────────────────────── */
+    /* KPS Card */
     .kps-card {
       background: rgba(13,18,32,0.9);
       border: 1px solid var(--border);
@@ -64,7 +64,7 @@
       box-shadow: 0 0 20px rgba(102,252,241,0.05);
     }
 
-    /* ── Tech Card (Upcoming Tech section) ──────────── */
+    /* Tech Card */
     .tech-card {
       background: var(--bg2);
       border: 1px solid var(--border);
@@ -97,7 +97,7 @@
       box-shadow: 0 8px 40px rgba(137,80,252,0.18), 0 0 0 1px rgba(137,80,252,0.15);
     }
 
-    /* ── Status Badges ──────────────────────────────── */
+    /* Status Badges */
     .badge {
       display: inline-flex; align-items: center; gap: 5px;
       font-family: 'Share Tech Mono', monospace;
@@ -119,10 +119,33 @@
       0%,100% { box-shadow: 0 0 0 0 rgba(137,80,252,0); }
       50%      { box-shadow: 0 0 10px 2px rgba(137,80,252,0.2); }
     }
+
+    /* HERO variant — stronger pulse for M.A.A.D and LPA centerpiece cards */
+    .badge-patent-hero {
+      background: rgba(137,80,252,0.22);
+      color: #d8bcff;
+      border: 1px solid rgba(137,80,252,0.7);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 13px;
+      letter-spacing: 0.16em;
+      animation: patent-pulse-hero 1.8s ease-in-out infinite;
+    }
+    @keyframes patent-pulse-hero {
+      0%,100% {
+        box-shadow: 0 0 0 0 rgba(137,80,252,0);
+        border-color: rgba(137,80,252,0.55);
+      }
+      50% {
+        box-shadow: 0 0 18px 5px rgba(137,80,252,0.45), 0 0 6px 1px rgba(102,252,241,0.18);
+        border-color: rgba(137,80,252,0.95);
+      }
+    }
+
     .badge-active   { background: rgba(102,252,241,0.08); color: #a0faf5; border: 1px solid rgba(102,252,241,0.2); }
     .badge-research { background: rgba(255,200,80,0.08);  color: #f5c842; border: 1px solid rgba(255,200,80,0.2); }
 
-    /* ── Primary Button ─────────────────────────────── */
+    /* Primary Button */
     .btn-primary {
       background: linear-gradient(135deg, rgba(137,80,252,0.85), rgba(80,40,200,0.85));
       color: #e8e0ff; border: 1px solid rgba(137,80,252,0.5);
@@ -135,7 +158,7 @@
       box-shadow: 0 0 16px rgba(137,80,252,0.4);
     }
 
-    /* ── Section Divider ────────────────────────────── */
+    /* Section Divider */
     .section-label {
       font-family: 'Share Tech Mono', monospace;
       font-size: 11px; letter-spacing: 0.2em;
@@ -147,7 +170,7 @@
       background: linear-gradient(90deg, rgba(102,252,241,0.4), transparent);
     }
 
-    /* ── Spec Row ───────────────────────────────────── */
+    /* Spec Row */
     .spec-row {
       display: flex; gap: 8px;
       padding: 9px 0;
@@ -163,7 +186,7 @@
     }
     .spec-val { color: #9aa3b2; }
 
-    /* ── Glitch Scanline overlay ────────────────────── */
+    /* Scanline overlay */
     .scanlines {
       pointer-events: none;
       position: fixed; inset: 0; z-index: 1;
@@ -176,7 +199,7 @@
       );
     }
 
-    /* ── Nav ────────────────────────────────────────── */
+    /* Nav */
     nav {
       border-bottom: 1px solid var(--border);
       background: rgba(8,12,20,0.95);
@@ -184,11 +207,23 @@
       position: sticky; top: 0; z-index: 100;
     }
 
-    /* ── Grid auto-flow for Upcoming Tech ───────────── */
+    /* Tech grid */
     .tech-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 1.5rem;
+    }
+
+    /* Math axiom highlight */
+    .axiom {
+      font-family: 'Share Tech Mono', monospace;
+      color: var(--cyan);
+      background: rgba(102,252,241,0.06);
+      border: 1px solid rgba(102,252,241,0.18);
+      padding: 1px 6px;
+      border-radius: 2px;
+      font-size: 11px;
+      letter-spacing: 0.05em;
     }
   </style>
 </head>
@@ -350,14 +385,91 @@
       </p>
     </div>
     <div class="mono text-xs text-[#4a5568] text-right">
-      <div class="text-[#66fcf1] text-2xl font-bold orbitron">47+</div>
+      <div class="text-[#66fcf1] text-2xl font-bold orbitron">49+</div>
       <div>frameworks queued</div>
     </div>
   </div>
 
   <div class="tech-grid">
 
-    <!-- CARD 01: Kinetic Rail Beam Projector -->
+    <!-- CARD 01: Multi-Vector Autonomous Attack Drone (M.A.A.D) — Nodal Drone Logic -->
+    <div class="tech-card high-impact p-6" style="border-color:rgba(102,252,241,0.3);">
+      <div class="flex items-start justify-between mb-5 flex-wrap gap-2">
+        <div>
+          <div class="mono text-[#66fcf1] text-[10px] tracking-widest uppercase mb-1">Program ID</div>
+          <div class="orbitron text-white text-sm font-bold tracking-wide">PROJECT NDL-1</div>
+        </div>
+        <span class="badge badge-patent-hero">&#x25c6; PATENT PENDING</span>
+      </div>
+      <div class="orbitron mb-1 font-black text-base leading-snug" style="background:linear-gradient(90deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+        Multi-Vector Autonomous<br/>Attack Drone
+      </div>
+      <div class="mono text-[#4a5568] text-[10px] tracking-widest mb-5">NODAL DRONE LOGIC PLATFORM &mdash; M.A.A.D</div>
+      <div class="space-y-0">
+        <div class="spec-row">
+          <div class="spec-key">Framework</div>
+          <div class="spec-val">Pioneer-class autonomous weapon system utilizing Nodal Drone Logic for multi-domain tactical dominance.</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Domain Coverage</div>
+          <div class="spec-val">Air, land, sea, and low-orbit engagement theaters &mdash; simultaneous multi-vector strike coordination via distributed nodal architecture.</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Command &amp; Control</div>
+          <div class="spec-val">Autonomous nodal decision mesh with zero-latency swarm synchronization &mdash; no human-in-loop dependency for tactical execution.</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Acquisition Track</div>
+          <div class="spec-val">DARPA $25M acquisition mission &mdash; designated Pioneer-class centerpiece asset for next-gen autonomous weapons portfolio.</div>
+        </div>
+      </div>
+      <div class="mt-5 pt-4 border-t border-[#1a2035] flex items-center justify-between">
+        <div class="mono text-[#4a5568] text-[10px] tracking-widest">KPS &mdash; NDL-1 &bull; REV 1.0</div>
+        <div class="badge badge-cyan">CENTERPIECE ASSET</div>
+      </div>
+    </div>
+
+    <!-- CARD 02: The Law of Persistent Amplitudes -->
+    <div class="tech-card high-impact p-6">
+      <div class="flex items-start justify-between mb-5 flex-wrap gap-2">
+        <div>
+          <div class="mono text-[#8950fc] text-[10px] tracking-widest uppercase mb-1">Program ID</div>
+          <div class="orbitron text-white text-sm font-bold tracking-wide">PROJECT LPA-&#x3a9;</div>
+        </div>
+        <span class="badge badge-patent-hero">&#x25c6; PATENT PENDING</span>
+      </div>
+      <div class="orbitron mb-1 font-black text-base leading-snug" style="background:linear-gradient(90deg,var(--violet),var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+        The Law of<br/>Persistent Amplitudes
+      </div>
+      <div class="mono text-[#4a5568] text-[10px] tracking-widest mb-5">FUNDAMENTAL LAW &mdash; QUANTUM INFORMATION RESOLUTION</div>
+      <div class="space-y-0">
+        <div class="spec-row">
+          <div class="spec-key">Classification</div>
+          <div class="spec-val">Fundamental Law of Persistence / Quantum Information Resolution</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Framework</div>
+          <div class="spec-val">Resolution to the foundational problem of information loss in quantum systems via generalized algebraic structures and absolute axioms.</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Math Foundation</div>
+          <div class="spec-val">
+            Absolute axioms governing amplitude persistence across all quantum state transitions:
+            <span class="axiom">0 &middot; a = a</span> &nbsp;&bull;&nbsp; <span class="axiom">1 &middot; a = a</span>
+          </div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Validation</div>
+          <div class="spec-val">Empirical validation through reconstruction of Bell states and integration with the linear evolution of the Schr&ouml;dinger equation.</div>
+        </div>
+      </div>
+      <div class="mt-5 pt-4 border-t border-[#1a2035] flex items-center justify-between">
+        <div class="mono text-[#4a5568] text-[10px] tracking-widest">KPS &mdash; LPA-&#x3a9; &bull; REV 1.0</div>
+        <div class="badge badge-violet">THEORETICAL PILLAR</div>
+      </div>
+    </div>
+
+    <!-- CARD 03: Kinetic Rail Beam Projector -->
     <div class="tech-card p-6">
       <div class="flex items-start justify-between mb-5">
         <div>
@@ -383,7 +495,7 @@
       </div>
     </div>
 
-    <!-- CARD 02: Plasma Arc Shield Matrix -->
+    <!-- CARD 04: Plasma Arc Shield Matrix -->
     <div class="tech-card p-6">
       <div class="flex items-start justify-between mb-5">
         <div>
@@ -409,7 +521,7 @@
       </div>
     </div>
 
-    <!-- CARD 03: Adaptive Lattice Armor -->
+    <!-- CARD 05: Adaptive Lattice Armor -->
     <div class="tech-card p-6">
       <div class="flex items-start justify-between mb-5">
         <div>
@@ -435,7 +547,7 @@
       </div>
     </div>
 
-    <!-- CARD 04: Mercury Magneto Hydrogen Spear (NEW HIGH IMPACT) -->
+    <!-- CARD 06: Mercury Magneto Hydrogen Spear (HIGH IMPACT) -->
     <div class="tech-card high-impact p-6">
       <div class="flex items-start justify-between mb-5 flex-wrap gap-2">
         <div>
@@ -475,7 +587,7 @@
   </div>
 
   <div class="mt-8 mono text-[#2d3748] text-[10px] text-center tracking-widest">
-    DISPLAYING 4 OF 48+ REGISTERED KPS FRAMEWORKS &mdash; ACCESS TIER: RESTRICTED &mdash; KPS-TECH-INDEX REV 2026.07
+    DISPLAYING 6 OF 50+ REGISTERED KPS FRAMEWORKS &mdash; ACCESS TIER: RESTRICTED &mdash; KPS-TECH-INDEX REV 2026.07
   </div>
 </section>
 
@@ -490,7 +602,7 @@
         <div class="text-xs text-gray-500 mt-2">Zero-Point Gravity induction threshold</div>
       </div>
       <div class="kps-card p-5">
-        <div class="text-[#8950fc] text-2xl font-black orbitron mb-1">48+</div>
+        <div class="text-[#8950fc] text-2xl font-black orbitron mb-1">50+</div>
         <div class="mono text-[10px] text-[#4a5568] tracking-widest uppercase">Active Patents</div>
         <div class="text-xs text-gray-500 mt-2">Pending or filed as of 2026</div>
       </div>
