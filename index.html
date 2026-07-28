@@ -1,174 +1,531 @@
-PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVuIj4KPGhlYWQ+CiAgPG1l
-dGEgY2hhcnNldD0iVVRGLTgiIC8+CiAgPG1ldGEgbmFtZT0idmlld3BvcnQi
-IGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0x
-LjAiIC8+CiAgPHRpdGxlPktpbmV0aWMgUGVyaW1ldGVyIFN5c3RlbXMg4oCU
-IERlZmVuc2UgVGVjaG5vbG9neTwvdGl0bGU+CiAgPHNjcmlwdCBzcmM9Imh0
-dHBzOi8vY2RuLnRhaWx3aW5kY3NzLmNvbSI+PC9zY3JpcHQ+CiAgPGxpbmsg
-cmVsPSJwcmVjb25uZWN0IiBocmVmPSJodHRwczovL2ZvbnRzLmdvb2dsZWFw
-aXMuY29tIiAvPgogIDxsaW5rIGhyZWY9Imh0dHBzOi8vZm9udHMuZ29vZ2xl
-YXBpcy5jb20vY3NzMj9mYW1pbHk9T3JiaXRyb246d2dodEA0MDA7NzAwOzkw
-MCZmYW1pbHk9U2hhcmUrVGVjaCtNb25vJmZhbWlseT1JbnRlcjp3Z2h0QDMw
-MDs0MDA7NjAwOzcwMDs5MDAmZGlzcGxheT1zd2FwIiByZWw9InN0eWxlc2hl
-ZXQiIC8+CjwvaGVhZD4KPGJvZHkgY2xhc3M9Im92ZXJmbG93LXgtaGlkZGVu
-Ij4KICA8IS0tID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
-PT0gTkRBIC8gQ09ORklERU5USUFMSVRZIE1PREFMIC0tPgogIDxkaXYgaWQ9
-Im5kYU1vZGFsIiByb2xlPSJkaWFsb2ciIGFyaWEtbW9kYWw9InRydWUiIGFy
-aWEtbGFiZWxsZWRieT0ibmRhVGl0bGUiPgogICAgPGRpdiBjbGFzcz0ibW9k
-YWwtYm94IG1vZGFsLXNjcm9sbCI+CiAgICAgIDwhLS0gSGVhZGVyIC0tPgog
-ICAgICA8ZGl2IGNsYXNzPSJmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJl
-dHdlZW4gcHgtNyBweS01IGJvcmRlci1iIGJvcmRlci1bIzFmMjgzM10iPgog
-ICAgICAgIDxkaXY+CiAgICAgICAgICA8ZGl2IGNsYXNzPSJtb25vIHRleHQt
-WyM4OTUwZmNdIHRleHQteHMgdHJhY2tpbmctd2lkZXN0IHVwcGVyY2FzZSBt
-Yi0xIj4vLyBMRUdBTCBOT1RJQ0U8L2Rpdj4KICAgICAgICAgIDxoMiBpZD0i
-bmRhVGl0bGUiIGNsYXNzPSJ0ZXh0LXdoaXRlIGZvbnQtYmxhY2sgdXBwZXJj
-YXNlIHRleHQtbGciIHN0eWxlPSJmb250LWZhbWlseTonT3JiaXRyb24nLG1v
-bm9zcGFjZTsgbGV0dGVyLXNwYWNpbmc6LjA1ZW07Ij4KICAgICAgICAgICAg
-Q29uZmlkZW50aWFsaXR5ICYgTm9uLURpc2Nsb3N1cmUKICAgICAgICAgIDwv
-aDI+CiAgICAgICAgPC9kaXY+CiAgICAgICAgPGJ1dHRvbiBvbmNsaWNrPSJj
-bG9zZU5VQSgpIiBjbGFzcz0idGV4dC1bIzRhNGE1YV0gaG92ZXI6dGV4dC13
-aGl0ZSB0cmFuc2l0aW9uLWNvbG9ycyBwLTIiPgogICAgICAgICAgPHN2ZyBj
-bGFzcz0idy01IGgtNSIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDI0IDI0
-IiBzdHJva2U9ImN1cnJlbnRDb2xvciI+CiAgICAgICAgICAgIDxwYXRoIHN0
-cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIg
-c3Ryb2tlLXdpZHRoPSIyIiBkPSJNNiAxOEwxMTggNk02IDZsMTIgMTIiLz4K
-ICAgICAgICAgIDwvc3ZnPgogICAgICAgIDwvYnV0dG9uPgogICAgICA8L2Rp
-dj4KICAgICAgPCEtLSBCb2R5IC0tPgogICAgICA8ZGl2IGNsYXNzPSJweC03
-IHB5LTYgc3BhY2UteS01IHRleHQtc20gbGVhZGluZy1yZWxheGVkIj4KICAg
-ICAgICA8IS0tIENsYXNzaWZpY2F0aW9uIGJhbm5lciAtLT4KICAgICAgICA8
-ZGl2IGNsYXNzPSJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMyBweC00IHB5LTMg
-Ym9yZGVyIGJvcmRlci1yZWQtOTAwLzQwIGJnLXJlZC05NTAvMTAiPgogICAg
-ICAgICAgPHN2ZyBjbGFzcz0idy00IGgtNCB0ZXh0LXJlZC00MDAgc2hyaW5r
-LTAiIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlPSJj
-dXJyZW50Q29sb3IiPgogICAgICAgICAgICA8cGF0aCBzdHJva2UtbGluZWNh
-cD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0
-aD0iMiIKICAgICAgICAgICAgICAgICAgZD0iTTEyIDl2Mm0wIDRoLjAxTTEw
-LjI5IDMuODZUMS44MiAxOGEyIDIgMCAwMDEuNzEgM2gxNi45NGEyIDIgMCAw
-MDEuNzEtM0wxMy43MSAzLjg2YTIgMiAwIDAwLTMuNDIgMHoiLz4KICAgICAg
-ICAgIDwvc3ZnPgogICAgICAgICAgPHNwYW4gY2xhc3M0PSJtb25vIHRleHQt
-eHMgdGV4dC1yZWQtNDAwIHRyYWNraW5nLXdpZGVyIHVwcGVyY2FzZSI+CiAg
-ICAgICAgICAgIENPTlRST0xMRUQgVEVDSE5JQ0FMIElORk9STUFUSU9OIOKA
-liBVTkFVVEhPUklaRUQgRElTQ0xPU1VSRSBQUk9ISUJJVEVECiAgICAgICAg
-ICA8L3NwYW4+CiAgICAgICAgPC9kaXY+CgogICAgICAgIDxwIGNsYXNzPSJ0
-ZXh0LWdyYXktNDAwIj4KICAgICAgICAgIEFsbCB0ZWNobmljYWwgZGF0YSwg
-c2NoZW1hdGljcywgc3BlY2lmaWNhdGlvbnMsIHByb2dyYW0gZGVzY3JpcHRp
-b25zLCBhbmQgaW50ZWxsZWN0dWFsIHByb3BlcnR5IGFjY2Vzc2libGUgdGhy
-b3VnaCB0aGlzIHBvcnRhbCBjb25zdGl0dXRlIDxzdHJvbmcgY2xhc3M9InRl
-eHQtd2hpdGUiPnByb3ByaWV0YXJ5IGFuZCBjb250cm9sbGVkIGluZm9ybWF0
-aW9uPC9zdHJvbmc+IGJlbG9uZ2luZyB0byBLaW5ldGljIFBlcmltZXRlciBT
-eXN0ZW1zIExMQyAoIktQUyIpLiBBY2Nlc3MgdG8gb3IgcmVjZWlwdCBvZiB0
-aGlzIGluZm9ybWF0aW9uIGltcGxpZXMgYmluZGluZyBhZ3JlZW1lbnQgdG8g
-dGhlIGZvbGxvd2luZyB0ZXJtcy4KICAgICAgICA8L3A+CgogICAgICAgIDxk
-aXYgY2xhc3M9InNwYWNlLXktNCI+CiAgICAgICAgICA8IS0tIFNCSVIgLS0+
-CiAgICAgICAgICA8ZGl2IGNsYXNzPSJrcHMtY2FyZCBwLTUiPgogICAgICAg
-ICAgICA8ZGl2IGNsYXNzPSJmbGV4IGl0ZW1zLXN0YXJ0IGdhcC0zIj4KICAg
-ICAgICAgICAgICA8ZGl2IGNsYXNzPSJtb25vIHRleHQtWyM2NmZjZjFdIHRl
-eHQteHMgc2hyaW5rLTAgcHQtMC41Ij7CpSAwMTwvZGl2PgogICAgICAgICAg
-ICAgIDxkaXY+CiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSJ0ZXh0LXdo
-aXRlIHRleHQtc20gZm9udC1zZW1pYm9sZCBtYi0yIj5TQklSIERhdGEgUmln
-aHRzIOKAlCAzNSBVLlMuQy4gwqcgMTgzICYgREZBUlMgMjUyLjIyNy03MDE4
-PC9kaXY+CiAgICAgICAgICAgICAgICA8cCBjbGFzcz0idGV4dC1ncmF5LTQw
-MCB0ZXh0LXhzIGxlYWRpbmctcmVsYXhlZCI+CiAgICAgICAgICAgICAgICAg
-IFRlY2huaWNhbCBkYXRhIGFuZCBjb21wdXRlciBzb2Z0d2FyZSBkZXZlbG9w
-ZWQgdW5kZXIgU0JJUi9TVFRSIGZ1bmRpbmcgYXJlIHByb3RlY3RlZCB1bmRl
-cgogICAgICAgICAgICAgICAgICA8c3Ryb25nIGNsYXNzPSJ0ZXh0LVsjNjZm
-Y2YxXSI+MzUgVS5TLkMuIMKnIDE4Mzwvc3Ryb20+IGFuZAogICAgICAgICAg
-ICAgICAgICA8c3Ryb25nIGNsYXNzPSJ0ZXh0LVsjNjZmY2YxXSI+REZBUlMg
-MjUyLjIyNy03MDE4PC9zdHJvbmc+LiBUaGUgR292ZXJubWVudCByZXRhaW5z
-IExpbWl0ZWQgUmlnaHRzCiAgICAgICAgICAgICAgICAgIGR1cmluZyB0aGUg
-UHJvdGVjdGlvbiBQZXJpb2QuIEtQUyByZXRhaW5zIGV4Y2x1c2l2ZSBjb21t
-ZXJjaWFsaXphdGlvbiByaWdodHMuIFVuYXV0aG9yaXplZCBkaXNjbG9zdXJl
-LAogICAgICAgICAgICAgICAgICByZXZlcnNlIGVuZ2luZWVyaW5nLCBvciBy
-ZXByb2R1Y3Rpb24gb2YgU0JJUi1mdW5kZWQgZGVsaXZlcmFibGVzIGlzIHN0
-cmljdGx5IHByb2hpYml0ZWQgYW5kIGNvbnN0aXR1dGVzCiAgICAgICAgICAg
-ICAgICAgIGEgZmVkZXJhbCBvZmZlbnNlLgogICAgICAgICAgICAgICAgPC9w
-PgogICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICA8L2Rpdj4KICAg
-ICAgICAgIDwvZGl2PgogICAgICAgICAgPCEtLSBIVEFSIC0tPgogICAgICAg
-ICAgPGRpdiBjbGFzcz0ia3BzLWNhcmQgcC01Ij4KICAgICAgICAgICAgPGRp
-diBjbGFzcz0iZmxleCBpdGVtcy1zdGFydCBnYXAtMyI+CiAgICAgICAgICAg
-ICAgPGRpdiBjbGFzcz0ibW9ubyB0ZXh0LVsjODk1MGZjXSB0ZXh0LXhzIHNo
-cmluay0wIHB0LTAuNSI+wqAgMDI8L2Rpdj4KICAgICAgICAgICAgICA8ZGl2
-PgogICAgICAgICAgICAgICAgPGRpdiBjbGFzcz0idGV4dC13aGl0ZSB0ZXh0
-LXNtIGZvbnQtc2VtaWJvbGQgbWItMiI+SVRBUiAvIEVBUiBDb21wbGlhbmNl
-IOKAlCAyMiBDLkYuUi4gwqfCpSAxMjDigJMxMzAgLyAxNSBDLkYuUi4gwqfw
-pSA3MzDigJM3NzQ8L2Rpdj4KICAgICAgICAgICAgICAgIDxwIGNsYXNzPSJ0
-ZXh0LWdyYXktNDAwIHRleHQteHMgbGVhZGluZy1yZWxheGVkIj4KICAgICAg
-ICAgICAgICAgICAgIERlZmVuc2UgYXJ0aWNsZXMsIHRlY2huaWNhbCBkYXRh
-LCBhbmQgZGVmZW5zZSBzZXJ2aWNlcyBkZXNjcmliZWQgaGVyZWluIG1heSBi
-ZSBzdWJqZWN0IHRvIHRoZQogICAgICAgICAgICAgICAgICA8c3Ryb25nIGNs
-YXNzPSJ0ZXh0LVsjODk1MGZjXSI+SW50ZXJuYXRpb25hbCBUcmFmZmljIGlu
-IEFybXMgUmVndWxhdGlvbnMgKElUQVIpPC9zdHJvbmc+LCAyMiBDLkYuUi4K
-ICAgICAgICAgICAgICAgICAgUGFydHMgMTIw4oCTMTMwLCBhbmQvb3IgdGhl
-IDxzdHJvbmcgY2xhc3M9InRleHQtWyM4OTUwZmNdIj5FeHBvcnQgQWRtaW5p
-c3RyYXRpb24gUmVndWxhdGlvbnMgKEVBUik8L3N0cm9uZz4sCiAgICAgICAg
-ICAgICAgICAgIDE1IEMuRi5SLiBQYXJ0cyA3MzDigJM3NzQuIEV4cG9ydCwg
-cmUtZXhwb3J0LCB0cmFuc2Zlciwgb3IgZGlzY2xvc3VyZSB0byBmb3JlaWdu
-IHBlcnNvbnMgd2l0aG91dCBwcmlvcgogICAgICAgICAgICAgICAgICB3cml0
-dGVuIGF1dG9yaXphdGlvbiBmcm9tIHRoZSBVLlMuIERlcGFydG1lbnQgb2Yg
-U3RhdGUgKEREVEMpIG9yIENvbW1lcmNlIChCSVMpIGlzIGEgY3JpbWluYWwK
-ICAgICAgICAgICAgICAgICAgdmlvbGF0aW9uLiBBbGwgZW5nYWdlbWVudHMg
-cmVxdWlyZSB2ZXJpZmljYXRpb24gb2YgVS5TLiBQZXJzb24gc3RhdHVzIG9y
-IGFwcGxpY2FibGUgZXhwb3J0IGxpY2Vuc2UuCiAgICAgICAgICAgICAgICA8
-L3A+CiAgICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICAgIDwvZGl2Pgog
-ICAgICAgICAgPC9kaXY+CiAgICAgICAgICA8IS0tIE5EQSAtLT4KICAgICAg
-ICAgIDxkaXYgY2xhc3M9ImtpsLWNhcmQgcC01Ij4KICAgICAgICAgICAgPGRp
-diBjbGFzcz0iZmxleCBpdGVtcy1zdGFydCBnYXAtMyI+CiAgICAgICAgICAg
-ICAgPGRpdiBjbGFzcz0ibW9ubyB0ZXh0LVsjNjZmY2YxXSB0ZXh0LXhzIHNo
-cmluay0wIHB0LTAuNSI+wqAgMDM8L2Rpdj4KICAgICAgICAgICAgICA8ZGl2
-PgogICAgICAgICAgICAgICAgPGRpdiBjbGFzcz0idGV4dC13aGl0ZSB0ZXh0
-LXNtIGZvbnQtc2VtaWJvbGQgbWItMiI+Tm9uLURpc2Nsb3N1cmUgJiBDb25m
-aWRlbnRpYWxpdHkgQWdyZWVtZW50PC9kaXY+CiAgICAgICAgICAgICAgICA8
-cCBjbGFzcz0idGV4dC1ncmF5LTQwMCB0ZXh0LXhzIGxlYWRpbmctcmVsYXhl
-ZCI+CiAgICAgICAgICAgICAgICAgIEFsbCBwYXJ0aWVzIHJlY2VpdmluZyBL
-UFMgdGVjaG5pY2FsIGluZm9ybWF0aW9uIGFyZSBib3VuZCBieSBtdXR1YWwg
-bm9uLWRpc2Nsb3N1cmUgb2JsaWdhdGlvbnMgZm9yIGEKICAgICAgICAgICAg
-ICAgICAgbWluaW11bSBwZXJpb2Qgb2YgPHN0cm9uZyBjbGFzcz0idGV4dC13
-aGl0ZSI+dGVuICgxMCkgeWVhcnM8L3N0cm9uZz4gZnJvbSBkYXRlIG9mIGRp
-c2Nsb3N1cmUuIEluZm9ybWF0aW9uCiAgICAgICAgICAgICAgICAgIG1heSBu
-b3QgYmUgc2hhcmVkLCByZXByb2R1Y2VkLCBzdWJsaWNlbnNlZCwgb3IgZGlz
-Y2xvc2VkIHRvIGFueSB0aGlyZCBwYXJ0eSB3aXRob3V0IHByaW9yIHdyaXR0
-ZW4gY29uc2VudAogICAgICAgICAgICAgICAgICBmcm9tIEtQUyBMZWdhbCBD
-b3Vuc2VsLiBCcmVhY2ggY29uc3RpdHV0ZXMgZ3JvdW5kcyBmb3IgaW1tZWRp
-YXRlIGluanVuY3RpdmUgcmVsaWVmIGFuZCBjaXZpbC9jcmltaW5hbAogICAg
-ICAgICAgICAgICAgICBsaWFiaWxpdHkgdW5kZXIgYXBwbGljYWJsZSBmZWRl
-cmFsIGFuZCBzdGF0ZSBsYXcuCiAgICAgIC2PC9wPgogICAgICAgICAgICAg
-IDwvZGl2PgogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgIDwvZGl2Pgog
-ICAgICAgICAgPCEtLSBJUCBSaWdodHMgLS0+CiAgICAgICAgICA8ZGl2IGNs
-YXNzPSJrcHMtY2FyZCBwLTUiPgogICAgICAgICAgICA8ZGl2IGNsYXNzPSJm
-bGV4IGl0ZW1zLXN0YXJ0IGdhcC0zIj4KICAgICAgICAgICAgICA8ZGl2IGNs
-YXNzPSJtb25vIHRleHQtWyM4OTUwZmNdIHRleHQteHMgc2hyaW5rLTAgcHQt
-MC41Ij7CpSAwNDwvZGl2PgogICAgICAgICAgICAgIDxkaXY+CiAgICAgICAg
-ICAgICAgICA8ZGl2IGNsYXNzPSJ0ZXh0LXdoaXRlIHRleHQtc20gZm9udC1z
-ZW1pYm9sZCBtYi0yIj5JbnRlbGxlY3R1YWwgUHJvcGVydHkgJiBQYXRlbnQg
-UmlnaHRzPC9kaXY+CiAgICAgICAgICAgICAgICA8cCBjbGFzcz0idGV4dC1n
-cmF5LTQwMCB0ZXh0LXhzIGxlYWRpbmctcmVsYXhlZCI+CiAgICAgICAgICAg
-ICAgICAgIEFsbCBpbnZlbnRpb25zLCBpbm5vdmF0aW9ucywgYW5kIHRlY2hu
-aWNhbCBzb2x1dGlvbnMgZGVzY3JpYmVkIGhlcmVpbiBhcmUgdGhlIGV4Y2x1
-c2l2ZSBpbnRlbGxlY3R1YWwKICAgICAgICAgICAgICAgICAgcHJvcGVydHkg
-b2YgS1BTIGFuZC9vciBpdHMgcHJpbmNpcGFscy4gUGF0ZW50IGFwcGxpY2F0
-aW9ucyBmaWxlZCBhbmQgcGVuZGluZy4gVW5hdXRob3JpemVkIHVzZSwKICAg
-ICAgICAgICAgICAgICAgbWFudWZhY3R1cmUsIHNhbGUsIG9yIGltcG9ydGF0
-aW9uIG9mIGRlc2NyaWJlZCB0ZWNobm9sb2dpZXMgY29uc3RpdHV0ZXMgcGF0
-ZW50IGluZnJpbmdlbWVudCB1bmRlcgogICAgICAgICAgICAgICAgICA8c3Ry
-b25nIGNsYXNzPSJ0ZXh0LXdoaXRlIj4zNSBVLlMuQy4gwqcgMjcxPC9zdHJv
-bmc+LgogICAgICAgICAgICAgICAgPC9wPgogICAgICAgICAgICAgIDwvZGl2
-PgogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgIDwvZGl2PgogICAgICAg
-IDwvZGl2PgoKICAgICAgICA8ZGl2IGNsYXNzPSJtb25vIHRleHQtWzEwcHhd
-IHRleHQtWyMyZDM3NDhdIGxlYWRpbmctcmVsYXhlZCBwdC0yIGJvcmRlci10
-IGJvcmRlci1bIzFmMjgzM10iPgogICAgICAgICAgS1BTLUxFR0FMLU5EQS1S
-RVYtMy4xIHwgRWZmZWN0aXZlIDIwMjYuMDEuMDEgfCBHb3Zlcm5pbmcgTGF3
-OiBTdGF0ZSBvZiBUZW5uZXNzZWUsIEZlZGVyYWwgQ291cnRzIG9mIHRoZSBV
-bml0ZWQgU3RhdGVzIHwKICAgICAgICAgIElucXVpcmllczogbGVnYWxAa3Bz
-LWRlZmVuc2Uuc2VjIHwgVGhpcyBub3RpY2Ugc3VwZXJzZWRlcyBhbGwgcHJp
-b3IgY29uZmlkZW50aWFsaXR5IGFncmVlbWVudHMgdW5sZXNzIG90aGVyd2lz
-ZSBzdGF0ZWQgaW4gYSBzaWduZWQgaW5zdHJ1bWVudC4KICAgICAgICA8L2Rp
-dj4KICAgICAgPC9kaXY+CiAgICAgIDwhLS0gRm9vdGVyIC0tPgogICAgICA8
-ZGl2IGNsYXNzPSJweC03IHB5LTUgYm9yZGVyLXQgYm9yZGVyLVsjMWYyODMz
-XSBmbGV4IGZsZXgtY29sIHNtOmZsZXgtcm93IGdhcC0zIGl0ZW1zLWNlbnRl
-ciBqdXN0aWZ5LWJldHdlZW4iPgogICAgICAgIDxkaXYgY2xhc3M9Im1vbm8g
-dGV4dC14cyB0ZXh0LVsjNGE0YTVhXSI+CiAgICAgICAgICBCeSBjbG9zaW5n
-IHRoaXMgbm90aWNlIHlvdSBhY2tub3dsZWRnZSByZWNlaXB0IG9mIHRoZXNl
-IHRlcm1zLgogICAgICAgIDwvZGl2PgogICAgICAgIDxidXR0b24gb25jbGlj
-az0iY2xvc2VOREEoKSIgY2xhc3M9ImJ0bi1wcmltYXJ5IHB4LTYgcHktMi41
-IHRleHQteHMgcm91bmRlZC1zbSI+CiAgICAgICAgICBBY2tub3dsZWRnZSAm
-YW1wOyBDb250aW51ZQogICAgICAgIDwvYnV0dG9uPgogICAgICA8L2Rpdj4K
-ICAgIDwvZGl2PgogIDwvZGl2Pgo8L2h0bWw+Cg==
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinetic Perimeter Systems &#x2014; Defense Technology</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cyan:   #66fcf1;
+      --violet: #8950fc;
+      --bg:     #080c14;
+      --bg2:    #0d1220;
+      --border: #1a2035;
+      --zinc:   #1e2436;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: #c8cfd8;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .orbitron { font-family: 'Orbitron', monospace; }
+    .mono     { font-family: 'Share Tech Mono', monospace; }
+
+    /* ── Scrollbar ──────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* ── NDA Modal ──────────────────────────────────── */
+    #ndaModal {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(4,6,14,0.93);
+      backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem;
+    }
+    #ndaModal.hidden { display: none; }
+
+    .modal-box {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      max-width: 680px; width: 100%;
+      max-height: 92vh;
+      display: flex; flex-direction: column;
+    }
+    .modal-scroll { overflow-y: auto; }
+
+    /* ── KPS Card ───────────────────────────────────── */
+    .kps-card {
+      background: rgba(13,18,32,0.9);
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .kps-card:hover {
+      border-color: rgba(102,252,241,0.3);
+      box-shadow: 0 0 20px rgba(102,252,241,0.05);
+    }
+
+    /* ── Tech Card (Upcoming Tech section) ──────────── */
+    .tech-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .tech-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--violet), var(--cyan));
+      opacity: 0.7;
+    }
+    .tech-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(102,252,241,0.35);
+      box-shadow: 0 8px 32px rgba(102,252,241,0.08), 0 0 0 1px rgba(102,252,241,0.08);
+    }
+
+    /* HIGH-IMPACT card variant */
+    .tech-card.high-impact {
+      border-color: rgba(137,80,252,0.4);
+    }
+    .tech-card.high-impact::before {
+      background: linear-gradient(90deg, var(--cyan), var(--violet), var(--cyan));
+      opacity: 1;
+    }
+    .tech-card.high-impact:hover {
+      border-color: var(--violet);
+      box-shadow: 0 8px 40px rgba(137,80,252,0.18), 0 0 0 1px rgba(137,80,252,0.15);
+    }
+
+    /* ── Status Badges ──────────────────────────────── */
+    .badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 3px 9px; border-radius: 2px;
+    }
+    .badge-cyan    { background: rgba(102,252,241,0.1); color: var(--cyan);   border: 1px solid rgba(102,252,241,0.25); }
+    .badge-violet  { background: rgba(137,80,252,0.1);  color: var(--violet); border: 1px solid rgba(137,80,252,0.25); }
+    .badge-patent  {
+      background: rgba(137,80,252,0.15);
+      color: #c4a7ff;
+      border: 1px solid rgba(137,80,252,0.5);
+      font-size: 11px;
+      padding: 4px 12px;
+      letter-spacing: 0.14em;
+      animation: patent-pulse 3s ease-in-out infinite;
+    }
+    @keyframes patent-pulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(137,80,252,0); }
+      50%      { box-shadow: 0 0 10px 2px rgba(137,80,252,0.2); }
+    }
+    .badge-active   { background: rgba(102,252,241,0.08); color: #a0faf5; border: 1px solid rgba(102,252,241,0.2); }
+    .badge-research { background: rgba(255,200,80,0.08);  color: #f5c842; border: 1px solid rgba(255,200,80,0.2); }
+
+    /* ── Primary Button ─────────────────────────────── */
+    .btn-primary {
+      background: linear-gradient(135deg, rgba(137,80,252,0.85), rgba(80,40,200,0.85));
+      color: #e8e0ff; border: 1px solid rgba(137,80,252,0.5);
+      cursor: pointer; font-family: 'Share Tech Mono', monospace;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, rgba(137,80,252,1), rgba(100,50,230,1));
+      box-shadow: 0 0 16px rgba(137,80,252,0.4);
+    }
+
+    /* ── Section Divider ────────────────────────────── */
+    .section-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--cyan);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(102,252,241,0.4), transparent);
+    }
+
+    /* ── Spec Row ───────────────────────────────────── */
+    .spec-row {
+      display: flex; gap: 8px;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 12px; line-height: 1.55;
+    }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-key {
+      font-family: 'Share Tech Mono', monospace;
+      color: #4a5568; font-size: 10px; letter-spacing: 0.1em;
+      text-transform: uppercase; white-space: nowrap;
+      min-width: 130px; padding-top: 2px;
+    }
+    .spec-val { color: #9aa3b2; }
+
+    /* ── Glitch Scanline overlay ────────────────────── */
+    .scanlines {
+      pointer-events: none;
+      position: fixed; inset: 0; z-index: 1;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.04) 2px,
+        rgba(0,0,0,0.04) 4px
+      );
+    }
+
+    /* ── Nav ────────────────────────────────────────── */
+    nav {
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,12,20,0.95);
+      backdrop-filter: blur(12px);
+      position: sticky; top: 0; z-index: 100;
+    }
+
+    /* ── Grid auto-flow for Upcoming Tech ───────────── */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+<div class="scanlines" aria-hidden="true"></div>
+
+<!-- NDA / CONFIDENTIALITY MODAL -->
+<div id="ndaModal" role="dialog" aria-modal="true" aria-labelledby="ndaTitle">
+  <div class="modal-box">
+    <div class="flex items-center justify-between px-7 py-5 border-b border-[#1a2035]">
+      <div>
+        <div class="mono text-[#8950fc] text-xs tracking-widest uppercase mb-1">// LEGAL NOTICE</div>
+        <h2 id="ndaTitle" class="orbitron text-white font-black uppercase text-base tracking-wide">
+          Confidentiality &amp; Non-Disclosure
+        </h2>
+      </div>
+      <button onclick="closeNDA()" aria-label="Close" class="text-[#4a4a5a] hover:text-white transition-colors p-2">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-scroll px-7 py-6 space-y-5 text-sm leading-relaxed">
+      <div class="flex items-center gap-3 px-4 py-3 border border-red-900/40 bg-red-950/10">
+        <svg class="w-4 h-4 text-red-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+        </svg>
+        <span class="mono text-xs text-red-400 tracking-wider uppercase">
+          CONTROLLED TECHNICAL INFORMATION &#x2016; UNAUTHORIZED DISCLOSURE PROHIBITED
+        </span>
+      </div>
+      <p class="text-gray-400">
+        All technical data, schematics, specifications, program descriptions, and intellectual property accessible
+        through this portal constitute <strong class="text-white">proprietary and controlled information</strong>
+        belonging to Kinetic Perimeter Systems LLC (&ldquo;KPS&rdquo;). Access to or receipt of this information implies
+        binding agreement to the following terms.
+      </p>
+      <div class="space-y-4">
+        <div class="kps-card p-5">
+          <div class="flex items-start gap-3">
+            <div class="mono text-[#66fcf1] text-xs shrink-0 pt-0.5">&#xa7; 01</div>
+            <div>
+              <div class="text-white text-sm font-semibold mb-2">SBIR Data Rights &mdash; 35 U.S.C. &#xa7; 183 &amp; DFARS 252.227-7018</div>
+              <p class="text-gray-400 text-xs leading-relaxed">
+                Technical data and computer software developed under SBIR/STTR funding are protected under
+                <strong class="text-[#66fcf1]">35 U.S.C. &#xa7; 183</strong> and
+                <strong class="text-[#66fcf1]">DFARS 252.227-7018</strong>. The Government retains Limited Rights
+                during the Protection Period. KPS retains exclusive commercialization rights. Unauthorized disclosure,
+                reverse engineering, or reproduction of SBIR-funded deliverables is strictly prohibited.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="kps-card p-5">
+          <div class="flex items-start gap-3">
+            <div class="mono text-[#8950fc] text-xs shrink-0 pt-0.5">&#xa7; 02</div>
+            <div>
+              <div class="text-white text-sm font-semibold mb-2">ITAR / EAR Compliance &mdash; 22 C.F.R. &#xa7; 120&ndash;130 / 15 C.F.R. &#xa7; 730&ndash;774</div>
+              <p class="text-gray-400 text-xs leading-relaxed">
+                Defense articles, technical data, and defense services described herein may be subject to the
+                <strong class="text-[#8950fc]">International Traffic in Arms Regulations (ITAR)</strong>, 22 C.F.R.
+                Parts 120&ndash;130, and/or the <strong class="text-[#8950fc]">Export Administration Regulations (EAR)</strong>,
+                15 C.F.R. Parts 730&ndash;774. Export, re-export, transfer, or disclosure to foreign persons without
+                prior written authorization from the U.S. Department of State (DDTC) or Commerce (BIS) is a criminal
+                violation.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="kps-card p-5">
+          <div class="flex items-start gap-3">
+            <div class="mono text-[#66fcf1] text-xs shrink-0 pt-0.5">&#xa7; 03</div>
+            <div>
+              <div class="text-white text-sm font-semibold mb-2">Non-Disclosure Obligations</div>
+              <p class="text-gray-400 text-xs leading-relaxed">
+                By accessing this portal, the recipient agrees to hold all disclosed information in strict confidence.
+                No part of this material may be reproduced, distributed, or disclosed to any third party without the
+                express prior written consent of KPS. Breach may result in immediate injunctive relief and/or criminal
+                liability under applicable federal statutes.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="kps-card p-5">
+          <div class="flex items-start gap-3">
+            <div class="mono text-[#8950fc] text-xs shrink-0 pt-0.5">&#xa7; 04</div>
+            <div>
+              <div class="text-white text-sm font-semibold mb-2">Intellectual Property &amp; Patent Rights</div>
+              <p class="text-gray-400 text-xs leading-relaxed">
+                All inventions, innovations, and technical solutions described herein are the exclusive intellectual
+                property of KPS and/or its principals. Patent applications filed and pending. Unauthorized use,
+                manufacture, sale, or importation of described technologies constitutes patent infringement under
+                <strong class="text-white">35 U.S.C. &#xa7; 271</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mono text-[10px] text-[#2d3748] leading-relaxed pt-2 border-t border-[#1a2035]">
+        KPS-LEGAL-NDA-REV-3.1 | Effective 2026.01.01 | Governing Law: State of Tennessee, Federal Courts of the United States |
+        Inquiries: legal@kps-defense.sec | This notice supersedes all prior confidentiality agreements unless otherwise stated in a signed instrument.
+      </div>
+    </div>
+    <div class="px-7 py-5 border-t border-[#1a2035] flex flex-col sm:flex-row gap-3 items-center justify-between shrink-0">
+      <div class="mono text-xs text-[#4a4a5a]">By closing this notice you acknowledge receipt of these terms.</div>
+      <button onclick="closeNDA()" class="btn-primary px-6 py-2.5 text-xs rounded-sm">
+        Acknowledge &amp; Continue
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-7 h-7 border border-[#66fcf1]/40 flex items-center justify-center">
+        <div class="w-3 h-3 bg-[#66fcf1]" style="clip-path:polygon(50% 0%,100% 100%,0% 100%)"></div>
+      </div>
+      <span class="orbitron text-white text-sm font-bold tracking-wider">KPS</span>
+      <span class="text-[#2d3748] text-xs mx-2">&#x7c;</span>
+      <span class="mono text-[#4a5568] text-xs tracking-widest uppercase">Kinetic Perimeter Systems</span>
+    </div>
+    <div class="hidden sm:flex items-center gap-6">
+      <a href="#programs"     class="mono text-xs text-[#4a5568] hover:text-[#66fcf1] transition-colors tracking-widest uppercase">Programs</a>
+      <a href="#upcoming"     class="mono text-xs text-[#4a5568] hover:text-[#66fcf1] transition-colors tracking-widest uppercase">Upcoming Tech</a>
+      <a href="#capabilities" class="mono text-xs text-[#4a5568] hover:text-[#66fcf1] transition-colors tracking-widest uppercase">Capabilities</a>
+    </div>
+    <div class="badge badge-cyan">CLASSIFIED PORTAL</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="relative max-w-7xl mx-auto px-6 pt-20 pb-16 z-10">
+  <div class="section-label mb-8">// DEFENSE TECHNOLOGY PORTFOLIO</div>
+  <h1 class="orbitron text-white text-4xl sm:text-5xl font-black uppercase leading-tight mb-4" style="letter-spacing:.04em;">
+    Kinetic Perimeter<br/><span style="color:var(--cyan)">Systems</span>
+  </h1>
+  <p class="text-[#6b7280] max-w-xl text-sm leading-relaxed mb-8">
+    Advanced propulsion, structural composites, and integrated command architectures for the next generation of
+    aerospace and defense systems. All frameworks subject to patent protection and ITAR controls.
+  </p>
+  <div class="flex flex-wrap gap-3">
+    <div class="badge badge-violet">KPS &mdash; LLC</div>
+    <div class="badge badge-cyan">McMinnville, TN</div>
+    <div class="badge badge-active">Active R&amp;D</div>
+  </div>
+</header>
+
+<!-- UPCOMING TECH SECTION -->
+<section id="upcoming" class="relative max-w-7xl mx-auto px-6 pb-24 z-10">
+  <div class="flex items-end justify-between mb-10 flex-wrap gap-4">
+    <div>
+      <div class="section-label mb-3">// UPCOMING TECHNOLOGY FRAMEWORKS</div>
+      <h2 class="orbitron text-white text-2xl font-bold uppercase tracking-wide">Advanced Systems Pipeline</h2>
+      <p class="text-[#4a5568] text-xs mono mt-2">
+        SELECT * FROM kps_tech WHERE status IN ('PATENT_PENDING','IN_DEVELOPMENT') ORDER BY priority DESC
+      </p>
+    </div>
+    <div class="mono text-xs text-[#4a5568] text-right">
+      <div class="text-[#66fcf1] text-2xl font-bold orbitron">47+</div>
+      <div>frameworks queued</div>
+    </div>
+  </div>
+
+  <div class="tech-grid">
+
+    <!-- CARD 01: Kinetic Rail Beam Projector -->
+    <div class="tech-card p-6">
+      <div class="flex items-start justify-between mb-5">
+        <div>
+          <div class="mono text-[#66fcf1] text-[10px] tracking-widest uppercase mb-1">Program ID</div>
+          <div class="orbitron text-white text-sm font-bold tracking-wide">PROJECT KRB-X1</div>
+        </div>
+        <span class="badge badge-active">IN DEVELOPMENT</span>
+      </div>
+      <div class="orbitron text-[#66fcf1] text-base font-bold mb-5 leading-snug">Kinetic Rail Beam Projector</div>
+      <div class="space-y-0">
+        <div class="spec-row">
+          <div class="spec-key">Propulsion</div>
+          <div class="spec-val">Electromagnetic rail-launch system &mdash; 8,200+ m/s terminal velocity via staged capacitor discharge array.</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Structural Integrity</div>
+          <div class="spec-val">Tungsten-carbide penetrator core with ablative ceramic heat shield composite.</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Command &amp; Control</div>
+          <div class="spec-val">Autonomous trajectory correction with inertial + GPS fusion targeting.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 02: Plasma Arc Shield Matrix -->
+    <div class="tech-card p-6">
+      <div class="flex items-start justify-between mb-5">
+        <div>
+          <div class="mono text-[#8950fc] text-[10px] tracking-widest uppercase mb-1">Program ID</div>
+          <div class="orbitron text-white text-sm font-bold tracking-wide">PROJECT PSM-7</div>
+        </div>
+        <span class="badge badge-research">IN RESEARCH</span>
+      </div>
+      <div class="orbitron text-[#8950fc] text-base font-bold mb-5 leading-snug">Plasma Arc Shield Matrix</div>
+      <div class="space-y-0">
+        <div class="spec-row">
+          <div class="spec-key">Mechanism</div>
+          <div class="spec-val">Ionized plasma barrier at 15,000&deg;K &mdash; intercepts and ablates projectile threats before hull contact.</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Structural Integrity</div>
+          <div class="spec-val">Magnetohydrodynamic field anchoring with boron-nitride containment coil wrap.</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Power Source</div>
+          <div class="spec-val">Compact thorium-cycle reactor with millisecond surge capacity.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 03: Adaptive Lattice Armor -->
+    <div class="tech-card p-6">
+      <div class="flex items-start justify-between mb-5">
+        <div>
+          <div class="mono text-[#66fcf1] text-[10px] tracking-widest uppercase mb-1">Program ID</div>
+          <div class="orbitron text-white text-sm font-bold tracking-wide">PROJECT ALA-3</div>
+        </div>
+        <span class="badge badge-active">PROTOTYPE</span>
+      </div>
+      <div class="orbitron text-[#66fcf1] text-base font-bold mb-5 leading-snug">Adaptive Lattice Armor System</div>
+      <div class="space-y-0">
+        <div class="spec-row">
+          <div class="spec-key">Mechanism</div>
+          <div class="spec-val">Piezoelectric metamaterial panels re-orient microstructure in &lt;4ms on impact signal, distributing energy across the lattice.</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Structural Integrity</div>
+          <div class="spec-val">Graphene-aerogel sandwich composite with self-healing polymer matrix interface.</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Command &amp; Control</div>
+          <div class="spec-val">Embedded MEMS sensor array with onboard FPGA real-time lattice reconfiguration.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 04: Mercury Magneto Hydrogen Spear (NEW HIGH IMPACT) -->
+    <div class="tech-card high-impact p-6">
+      <div class="flex items-start justify-between mb-5 flex-wrap gap-2">
+        <div>
+          <div class="mono text-[#8950fc] text-[10px] tracking-widest uppercase mb-1">Program ID</div>
+          <div class="orbitron text-white text-sm font-bold tracking-wide">PROJECT MAG-H</div>
+        </div>
+        <span class="badge badge-patent">&#x25c6; PATENT PENDING</span>
+      </div>
+      <div class="orbitron mb-1 font-black text-base leading-snug" style="background:linear-gradient(90deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+        Mercury Magneto<br/>Hydrogen Spear
+      </div>
+      <div class="mono text-[#4a5568] text-[10px] tracking-widest mb-5">ZERO-POINT GRAVITY DRIVE PLATFORM</div>
+      <div class="space-y-0">
+        <div class="spec-row">
+          <div class="spec-key">Propulsion</div>
+          <div class="spec-val">Mercury Magneto Hydrogen Drive System &mdash; creates Zero-Point Gravity via 50,000+ RPM fluid rotation.</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Structural Integrity</div>
+          <div class="spec-val">Advanced heat-reflective/absorptive hull composite (Palladium, Germanium, and Uranium skin).</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Command &amp; Control</div>
+          <div class="spec-val">Integrated AI/Conscience system with real-time neural coupling interface.</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">Pilot Protection</div>
+          <div class="spec-val">Radiation-shielded cockpit utilizing specialized gold-silver mesh weave.</div>
+        </div>
+      </div>
+      <div class="mt-5 pt-4 border-t border-[#1a2035] flex items-center justify-between">
+        <div class="mono text-[#4a5568] text-[10px] tracking-widest">KPS &mdash; MAG-H &bull; REV 1.0</div>
+        <div class="badge badge-violet">HIGH IMPACT</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="mt-8 mono text-[#2d3748] text-[10px] text-center tracking-widest">
+    DISPLAYING 4 OF 48+ REGISTERED KPS FRAMEWORKS &mdash; ACCESS TIER: RESTRICTED &mdash; KPS-TECH-INDEX REV 2026.07
+  </div>
+</section>
+
+<!-- CAPABILITIES BAR -->
+<section id="capabilities" class="border-t border-[#1a2035] relative z-10">
+  <div class="max-w-7xl mx-auto px-6 py-16">
+    <div class="section-label mb-10">// CORE CAPABILITIES</div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="kps-card p-5">
+        <div class="text-[#66fcf1] text-2xl font-black orbitron mb-1">&gt;50K</div>
+        <div class="mono text-[10px] text-[#4a5568] tracking-widest uppercase">RPM Fluid Rotation</div>
+        <div class="text-xs text-gray-500 mt-2">Zero-Point Gravity induction threshold</div>
+      </div>
+      <div class="kps-card p-5">
+        <div class="text-[#8950fc] text-2xl font-black orbitron mb-1">48+</div>
+        <div class="mono text-[10px] text-[#4a5568] tracking-widest uppercase">Active Patents</div>
+        <div class="text-xs text-gray-500 mt-2">Pending or filed as of 2026</div>
+      </div>
+      <div class="kps-card p-5">
+        <div class="text-[#66fcf1] text-2xl font-black orbitron mb-1">4x</div>
+        <div class="mono text-[10px] text-[#4a5568] tracking-widest uppercase">Hull Composites</div>
+        <div class="text-xs text-gray-500 mt-2">Pd / Ge / U / Au-Ag shielding tiers</div>
+      </div>
+      <div class="kps-card p-5">
+        <div class="text-[#8950fc] text-2xl font-black orbitron mb-1">AI/&lt;1ms</div>
+        <div class="mono text-[10px] text-[#4a5568] tracking-widest uppercase">Neural Coupling</div>
+        <div class="text-xs text-gray-500 mt-2">Real-time pilot-system integration latency</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-[#1a2035] relative z-10">
+  <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="mono text-[#2d3748] text-[10px] tracking-widest">
+      &copy; 2026 KINETIC PERIMETER SYSTEMS LLC &mdash; ALL RIGHTS RESERVED &mdash; ITAR CONTROLLED
+    </div>
+    <div class="mono text-[#2d3748] text-[10px] tracking-widest">KPS-PORTAL-v2.0 &bull; McMinnville, TN</div>
+  </div>
+</footer>
+
+<script>
+  function closeNDA() {
+    var m = document.getElementById('ndaModal');
+    if (m) m.classList.add('hidden');
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeNDA();
+  });
+</script>
+</body>
+</html>
