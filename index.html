@@ -7,3 +7,1309 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       CLOUDFLARE WEB ANALYTICS — VISITOR MONITORING
+       Tracks: IP origin, geographic data, session metadata, referrer signals
+       Activate: Replace YOUR_CF_BEACON_TOKEN with live Cloudflare token
+  ═══════════════════════════════════════════════════════════════ -->
+  <!-- <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+       data-cf-beacon='{"token":"YOUR_CF_BEACON_TOKEN","spa":true}'></script> -->
+
+  <style>
+    :root {
+      --zinc-950: #09090b;
+      --zinc-900: #18181b;
+      --zinc-800: #27272a;
+      --zinc-700: #3f3f46;
+      --zinc-500: #71717a;
+      --zinc-400: #a1a1aa;
+      --zinc-200: #e4e4e7;
+      --cyan-400: #22d3ee;
+      --cyan-300: #67e8f9;
+      --cyan-500: #06b6d4;
+      --violet-500: #8b5cf6;
+      --violet-400: #a78bfa;
+      --violet-600: #7c3aed;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0; padding: 0;
+      background: var(--zinc-950);
+      color: var(--zinc-200);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ─── BOOT SCREEN ─── */
+    #boot-screen {
+      position: fixed; inset: 0; z-index: 9999;
+      background: #000;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      font-family: 'Share Tech Mono', monospace;
+      color: var(--cyan-400);
+      transition: opacity 0.8s ease;
+    }
+    #boot-screen.fade-out { opacity: 0; pointer-events: none; }
+
+    .boot-logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.2rem, 4vw, 2.2rem);
+      font-weight: 900;
+      color: var(--cyan-400);
+      letter-spacing: 0.25em;
+      text-align: center;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 30px var(--cyan-400), 0 0 60px var(--cyan-500);
+    }
+    .boot-line {
+      font-size: 0.75rem;
+      color: var(--cyan-300);
+      opacity: 0;
+      animation: bootline 0.4s forwards;
+      letter-spacing: 0.08em;
+    }
+    @keyframes bootline {
+      from { opacity: 0; transform: translateX(-8px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    .boot-bar-wrap {
+      width: min(420px, 80vw);
+      height: 4px;
+      background: var(--zinc-800);
+      border-radius: 2px;
+      margin-top: 2rem;
+      overflow: hidden;
+    }
+    .boot-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--cyan-500), var(--violet-500));
+      border-radius: 2px;
+      transition: width 0.1s linear;
+    }
+    .boot-denied {
+      margin-top: 2rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1rem, 3vw, 1.8rem);
+      font-weight: 900;
+      color: #ef4444;
+      letter-spacing: 0.3em;
+      text-shadow: 0 0 20px #ef4444;
+      opacity: 0;
+      animation: denied-flash 1s 2.2s forwards;
+    }
+    @keyframes denied-flash {
+      0%   { opacity: 0; }
+      20%  { opacity: 1; }
+      40%  { opacity: 0; }
+      60%  { opacity: 1; }
+      80%  { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* ─── ENTRY GATE OVERLAY ─── */
+    #entry-gate {
+      position: fixed; inset: 0; z-index: 9000;
+      background: rgba(9,9,11,0.97);
+      backdrop-filter: blur(12px);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: flex-start;
+      overflow-y: auto;
+      padding: 2rem 1rem 4rem;
+    }
+    .gate-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding-top: 1rem;
+    }
+    .gate-classified-banner {
+      display: inline-block;
+      background: #ef4444;
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 900;
+      letter-spacing: 0.3em;
+      padding: 0.35rem 2rem;
+      margin-bottom: 1.5rem;
+      border-radius: 2px;
+    }
+    .gate-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1rem, 3.5vw, 1.9rem);
+      font-weight: 900;
+      color: var(--cyan-400);
+      letter-spacing: 0.15em;
+      text-shadow: 0 0 25px var(--cyan-500);
+      line-height: 1.3;
+    }
+    .gate-subtitle {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--violet-400);
+      letter-spacing: 0.2em;
+      margin-top: 0.5rem;
+    }
+
+    .gate-scan-line {
+      width: min(600px, 90vw);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cyan-400), var(--violet-500), transparent);
+      margin: 1.5rem auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .gate-scan-line::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 0%, var(--cyan-300) 50%, transparent 100%);
+      animation: scan 2.5s linear infinite;
+    }
+    @keyframes scan {
+      from { transform: translateX(-100%); }
+      to   { transform: translateX(200%); }
+    }
+
+    .gate-policy {
+      width: min(640px, 92vw);
+      background: rgba(239,68,68,0.08);
+      border: 1px solid rgba(239,68,68,0.4);
+      border-radius: 6px;
+      padding: 1rem 1.5rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: #fca5a5;
+      line-height: 1.7;
+      letter-spacing: 0.04em;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .gate-policy strong {
+      color: #ef4444;
+      display: block;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.5rem;
+    }
+
+    .gate-form-card {
+      width: min(560px, 92vw);
+      background: rgba(39,39,42,0.7);
+      border: 1px solid var(--zinc-700);
+      border-top: 2px solid var(--cyan-500);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 0 60px rgba(6,182,212,0.08), 0 0 120px rgba(139,92,246,0.05);
+    }
+    .form-section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--cyan-400);
+      letter-spacing: 0.25em;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label {
+      display: block;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--zinc-400);
+      letter-spacing: 0.12em;
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+    }
+    .form-group label span.required { color: var(--cyan-400); margin-left: 2px; }
+    .form-group input, .form-group select {
+      width: 100%;
+      background: var(--zinc-900);
+      border: 1px solid var(--zinc-700);
+      border-radius: 4px;
+      padding: 0.6rem 0.9rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--zinc-200);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus {
+      border-color: var(--cyan-500);
+      box-shadow: 0 0 0 2px rgba(6,182,212,0.15);
+    }
+    .form-group input::placeholder { color: var(--zinc-700); }
+
+    .captcha-placeholder {
+      width: 100%;
+      background: var(--zinc-900);
+      border: 1px solid var(--zinc-700);
+      border-radius: 4px;
+      padding: 1rem;
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .captcha-checkbox {
+      width: 22px; height: 22px;
+      border: 2px solid var(--zinc-500);
+      border-radius: 3px;
+      background: var(--zinc-800);
+      flex-shrink: 0;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s;
+    }
+    .captcha-checkbox:hover { border-color: var(--cyan-400); }
+    .captcha-checkbox.checked {
+      background: var(--cyan-500);
+      border-color: var(--cyan-500);
+    }
+    .captcha-checkbox.checked::after {
+      content: '✓';
+      color: #000;
+      font-size: 0.9rem;
+      font-weight: 900;
+    }
+    .captcha-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--zinc-400);
+    }
+    .captcha-brand {
+      margin-left: auto;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.55rem;
+      color: var(--zinc-600);
+      letter-spacing: 0.1em;
+      text-align: right;
+      line-height: 1.4;
+    }
+
+    .gate-submit-btn {
+      width: 100%;
+      padding: 0.9rem;
+      background: linear-gradient(135deg, var(--cyan-500), var(--violet-600));
+      border: none;
+      border-radius: 4px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.2em;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: opacity 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 20px rgba(6,182,212,0.2);
+    }
+    .gate-submit-btn:hover {
+      opacity: 0.9;
+      box-shadow: 0 0 30px rgba(6,182,212,0.35);
+    }
+    .gate-note {
+      margin-top: 1rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--zinc-600);
+      text-align: center;
+      letter-spacing: 0.06em;
+      line-height: 1.6;
+    }
+
+    /* ─── MAIN SITE (locked behind gate) ─── */
+    #main-site {
+      display: none;
+    }
+
+    /* Grid scan background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(6,182,212,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(6,182,212,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(9,9,11,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(6,182,212,0.15);
+      padding: 0.8rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      font-weight: 900;
+      color: var(--cyan-400);
+      letter-spacing: 0.15em;
+    }
+    .nav-brand span { color: var(--violet-400); }
+    .nav-links {
+      display: flex; gap: 2rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--zinc-400);
+    }
+    .nav-links a { color: inherit; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--cyan-400); }
+    .nav-badge {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.6rem;
+      background: rgba(239,68,68,0.15);
+      border: 1px solid rgba(239,68,68,0.4);
+      color: #fca5a5;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      letter-spacing: 0.12em;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 4rem 2rem;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(6,182,212,0.06) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--cyan-400);
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: #fff;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title .accent-cyan { color: var(--cyan-400); }
+    .hero-title .accent-violet { color: var(--violet-400); }
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--zinc-400);
+      max-width: 640px;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+    }
+    .hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .btn-primary {
+      padding: 0.85rem 2.2rem;
+      background: linear-gradient(135deg, var(--cyan-500), var(--violet-600));
+      border: none; border-radius: 4px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem; font-weight: 700;
+      color: #fff; letter-spacing: 0.18em;
+      cursor: pointer; text-decoration: none;
+      transition: box-shadow 0.2s, opacity 0.2s;
+      box-shadow: 0 0 20px rgba(6,182,212,0.2);
+    }
+    .btn-primary:hover { opacity: 0.88; box-shadow: 0 0 35px rgba(6,182,212,0.35); }
+    .btn-ghost {
+      padding: 0.85rem 2.2rem;
+      background: transparent;
+      border: 1px solid var(--zinc-700);
+      border-radius: 4px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem; font-weight: 700;
+      color: var(--zinc-400); letter-spacing: 0.18em;
+      cursor: pointer; text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--cyan-400); color: var(--cyan-400); }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 5rem 2rem; position: relative; }
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-eyebrow {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--violet-400);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: 0.08em;
+    }
+    .section-divider {
+      width: 60px; height: 2px;
+      background: linear-gradient(90deg, var(--cyan-500), var(--violet-500));
+      margin: 1rem auto 0;
+      border-radius: 1px;
+    }
+
+    /* ─── CAPABILITY CARDS ─── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .cap-card {
+      background: rgba(39,39,42,0.5);
+      border: 1px solid var(--zinc-800);
+      border-top: 2px solid var(--cyan-500);
+      border-radius: 8px;
+      padding: 2rem 1.5rem;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+    .cap-card:hover {
+      border-top-color: var(--violet-400);
+      box-shadow: 0 0 30px rgba(139,92,246,0.12);
+      transform: translateY(-4px);
+    }
+    .cap-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .cap-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--cyan-400);
+      letter-spacing: 0.12em;
+      margin-bottom: 0.75rem;
+    }
+    .cap-desc {
+      font-size: 0.85rem;
+      color: var(--zinc-400);
+      line-height: 1.7;
+    }
+    .cap-tag {
+      display: inline-block;
+      margin-top: 1rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--violet-400);
+      border: 1px solid rgba(139,92,246,0.3);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      letter-spacing: 0.1em;
+    }
+
+    /* ─── AUTHORIZED PERSONNEL CONTAINER ─── */
+    .authorized-container {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .auth-blur-overlay {
+      position: absolute; inset: 0; z-index: 10;
+      backdrop-filter: blur(20px);
+      background: rgba(9,9,11,0.6);
+      border-radius: 8px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 1rem;
+    }
+    .auth-blur-overlay .lock-icon { font-size: 3rem; }
+    .auth-blur-overlay .lock-label {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--cyan-400);
+      letter-spacing: 0.25em;
+      text-align: center;
+    }
+    .auth-blur-overlay .lock-sublabel {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--zinc-500);
+      letter-spacing: 0.15em;
+    }
+    .auth-blur-overlay .lock-cta {
+      margin-top: 0.5rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--violet-400);
+      border: 1px solid rgba(139,92,246,0.4);
+      padding: 0.5rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      letter-spacing: 0.12em;
+      transition: background 0.2s;
+    }
+    .auth-blur-overlay .lock-cta:hover { background: rgba(139,92,246,0.1); }
+
+    /* ─── DIAGRAM CARDS ─── */
+    .diagram-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .diagram-card {
+      background: var(--zinc-900);
+      border: 1px solid var(--zinc-800);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .diagram-frame {
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, rgba(6,182,212,0.05), rgba(139,92,246,0.05));
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      border-bottom: 1px solid var(--zinc-800);
+    }
+    .diagram-redacted-label {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 900;
+      color: rgba(6,182,212,0.4);
+      letter-spacing: 0.3em;
+      text-align: center;
+    }
+    .diagram-corner {
+      position: absolute;
+      width: 16px; height: 16px;
+      border-color: rgba(6,182,212,0.3);
+      border-style: solid;
+    }
+    .diagram-corner.tl { top: 10px; left: 10px; border-width: 2px 0 0 2px; }
+    .diagram-corner.tr { top: 10px; right: 10px; border-width: 2px 2px 0 0; }
+    .diagram-corner.bl { bottom: 10px; left: 10px; border-width: 0 0 2px 2px; }
+    .diagram-corner.br { bottom: 10px; right: 10px; border-width: 0 2px 2px 0; }
+    .diagram-info {
+      padding: 1rem 1.25rem;
+    }
+    .diagram-title {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--cyan-400);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.4rem;
+    }
+    .diagram-desc {
+      font-size: 0.78rem;
+      color: var(--zinc-500);
+    }
+
+    /* ─── TEASER SECTION ─── */
+    .teaser-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .teaser-card {
+      background: rgba(39,39,42,0.3);
+      border: 1px solid var(--zinc-800);
+      border-left: 3px solid var(--violet-500);
+      border-radius: 6px;
+      padding: 1.75rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .teaser-card::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 80px; height: 80px;
+      background: radial-gradient(circle, rgba(139,92,246,0.1), transparent);
+    }
+    .teaser-status {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--violet-400);
+      letter-spacing: 0.2em;
+      margin-bottom: 0.75rem;
+    }
+    .teaser-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+    }
+    .teaser-desc {
+      font-size: 0.82rem;
+      color: var(--zinc-500);
+      line-height: 1.6;
+    }
+    .teaser-redacted {
+      display: inline-block;
+      background: var(--zinc-800);
+      color: transparent;
+      border-radius: 2px;
+      user-select: none;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--zinc-950);
+      border-top: 1px solid var(--zinc-800);
+      padding: 3rem 2rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 2rem;
+    }
+    .footer-brand {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 900;
+      color: var(--cyan-400);
+      letter-spacing: 0.15em;
+    }
+    .footer-brand p {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--zinc-600);
+      font-weight: 400;
+      margin-top: 0.3rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* KPS COIN BADGE */
+    .kps-coin-badge {
+      background: linear-gradient(135deg, rgba(139,92,246,0.15), rgba(6,182,212,0.1));
+      border: 1px solid rgba(139,92,246,0.4);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 0 20px rgba(139,92,246,0.1);
+    }
+    .coin-badge-icon {
+      font-size: 1.8rem;
+      display: block;
+      margin-bottom: 0.4rem;
+      filter: drop-shadow(0 0 6px rgba(139,92,246,0.6));
+    }
+    .coin-badge-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 900;
+      color: var(--violet-400);
+      letter-spacing: 0.2em;
+      display: block;
+    }
+    .coin-badge-sub {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--cyan-400);
+      letter-spacing: 0.12em;
+      margin-top: 0.3rem;
+      display: block;
+    }
+    .coin-badge-alpha {
+      position: absolute;
+      top: -8px; right: -8px;
+      background: var(--violet-600);
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.45rem;
+      font-weight: 900;
+      padding: 0.15rem 0.4rem;
+      border-radius: 2px;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-legal {
+      text-align: right;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--zinc-700);
+      line-height: 1.8;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 2rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--zinc-900);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--zinc-700);
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── UTILITIES ─── */
+    .max-container { max-width: 1100px; margin: 0 auto; }
+    .highlight-cyan { color: var(--cyan-400); }
+    .highlight-violet { color: var(--violet-400); }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--zinc-950); }
+    ::-webkit-scrollbar-thumb { background: var(--zinc-700); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--cyan-500); }
+
+    @media (max-width: 640px) {
+      .footer-inner { grid-template-columns: 1fr; text-align: center; }
+      .footer-legal { text-align: center; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════════
+     SYSTEM BOOT SCREEN
+════════════════════════════════════════════════════════════════ -->
+<div id="boot-screen">
+  <div class="boot-logo">KPS — KINETIC PERIMETER SYSTEMS</div>
+  <div id="boot-lines" style="display:flex;flex-direction:column;gap:0.4rem;width:min(420px,80vw)"></div>
+  <div class="boot-bar-wrap"><div class="boot-bar-fill" id="boot-bar"></div></div>
+  <div class="boot-denied">⛔ ACCESS DENIED</div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     ENTRY GATE OVERLAY
+════════════════════════════════════════════════════════════════ -->
+<div id="entry-gate">
+  <div class="gate-header">
+    <div class="gate-classified-banner">⚑ CLASSIFIED ACCESS PORTAL ⚑</div>
+    <div class="gate-title">SECURE ACCESS PROTOCOL<br>KINETIC PERIMETER SYSTEMS</div>
+    <div class="gate-subtitle">// AUTHORIZATION REQUIRED — GOVERNMENT &amp; DOD PARTNERS ONLY //</div>
+  </div>
+
+  <div class="gate-scan-line"></div>
+
+  <div class="gate-policy">
+    <strong>⚠ ACCESS RESTRICTION NOTICE ⚠</strong>
+    ACCESS RESTRICTED TO VERIFIED GOVERNMENT AGENCIES AND DOD PARTNERS ONLY.
+    Unauthorized access to controlled technical information is a violation of
+    <strong style="color:#fbbf24;display:inline;">18 U.S.C. § 793</strong>
+    (Gathering, Transmitting or Losing Defense Information). All access attempts
+    are logged, traced, and subject to federal prosecution. By proceeding, you
+    confirm your identity and authorization level.
+  </div>
+
+  <div class="gate-form-card">
+    <div class="form-section-title">▸ Identity Verification — Authorized Personnel Only</div>
+
+    <div class="form-group">
+      <label>Full Legal Name <span class="required">*</span></label>
+      <input type="text" id="f-name" placeholder="LAST, FIRST M." autocomplete="off" />
+    </div>
+
+    <div class="form-group">
+      <label>Organization / Agency <span class="required">*</span></label>
+      <input type="text" id="f-org" placeholder="e.g. U.S. DEPARTMENT OF DEFENSE" autocomplete="off" />
+    </div>
+
+    <div class="form-group">
+      <label>Role / Title <span class="required">*</span></label>
+      <select id="f-role">
+        <option value="">— SELECT ROLE —</option>
+        <option>Contracting Officer (CO)</option>
+        <option>Program Manager — DoD</option>
+        <option>Defense Research Analyst</option>
+        <option>Intelligence Officer</option>
+        <option>Systems Engineer — Defense</option>
+        <option>Executive — Government Agency</option>
+        <option>Authorized DOD Contractor</option>
+        <option>Other — Verified Government Personnel</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Federal ID — UEI or CAGE Code <span class="required">*</span></label>
+      <input type="text" id="f-fedid" placeholder="e.g. ABC123DEF456 or 7X8Y9" autocomplete="off" maxlength="20" style="text-transform:uppercase;" />
+    </div>
+
+    <!-- hCaptcha Placeholder -->
+    <div style="margin-bottom:0.5rem;">
+      <label style="font-family:'Share Tech Mono',monospace;font-size:0.68rem;color:var(--zinc-400);letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">
+        Security Verification <span style="color:var(--cyan-400);">*</span>
+      </label>
+    </div>
+    <div class="captcha-placeholder" id="captcha-box">
+      <div class="captcha-checkbox" id="captcha-check" onclick="toggleCaptcha()"></div>
+      <span class="captcha-label">I am an authorized government representative</span>
+      <div class="captcha-brand">hCAPTCHA<br><span style="color:var(--zinc-700);">SECURE VERIFY</span></div>
+    </div>
+
+    <button class="gate-submit-btn" onclick="requestAccess()">
+      ▸ REQUEST AUTHORIZED ACCESS
+    </button>
+
+    <div class="gate-note">
+      This portal is monitored 24/7. All session metadata, IP origin, and biometric
+      signatures are logged under Executive Order 13526 (Classified National Security
+      Information). Requests are reviewed within 1–3 business days.
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem;font-family:'Share Tech Mono',monospace;font-size:0.62rem;color:var(--zinc-700);text-align:center;letter-spacing:0.1em;">
+    SESSION ID: <span id="session-id"></span> &nbsp;|&nbsp; TRACKING ACTIVE
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     MAIN SITE — VISIBLE ONLY AFTER GATE BYPASS (demo mode)
+════════════════════════════════════════════════════════════════ -->
+<div id="main-site">
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-brand">KPS<span> ⬡ </span>KINETIC PERIMETER</div>
+    <div class="nav-links">
+      <a href="#capabilities">Capabilities</a>
+      <a href="#diagrams">Systems</a>
+      <a href="#upcoming">Pipeline</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-badge">⚑ RESTRICTED ACCESS</div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-eyebrow">// NEXT-GENERATION DEFENSE TECHNOLOGY //</div>
+    <h1 class="hero-title">
+      <span class="accent-cyan">Kinetic</span> Perimeter<br>
+      <span class="accent-violet">Systems</span>
+    </h1>
+    <p class="hero-subtitle">
+      Delivering sovereign-grade defense capabilities through proprietary structural
+      engineering, advanced wave-state integrity systems, and autonomous threat
+      neutralization architectures — engineered for the modern battlespace.
+    </p>
+    <div class="hero-cta-row">
+      <a href="#capabilities" class="btn-primary">VIEW CAPABILITIES</a>
+      <a href="#contact" class="btn-ghost">REQUEST BRIEFING</a>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section id="capabilities" style="background: rgba(24,24,27,0.4);">
+    <div class="max-container">
+      <div class="section-header">
+        <div class="section-eyebrow">// SYSTEM CAPABILITIES //</div>
+        <h2 class="section-title">OPERATIONAL ARCHITECTURE</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="cards-grid">
+        <div class="cap-card">
+          <span class="cap-icon">🛡️</span>
+          <div class="cap-title">IMPENETRABLE HULL INTEGRITY</div>
+          <p class="cap-desc">
+            Proprietary Structural Matrix technology delivers hull integrity benchmarks
+            that exceed current defense industry standards by an undisclosed margin.
+            Engineered for sustained operation under extreme kinetic stress.
+          </p>
+          <span class="cap-tag">CAPABILITY-GRADE: TIER-1</span>
+        </div>
+        <div class="cap-card">
+          <span class="cap-icon">⚡</span>
+          <div class="cap-title">EXTREME AUTONOMOUS MANEUVERABILITY</div>
+          <p class="cap-desc">
+            Advanced Wave-State Integrity subsystems enable real-time adaptive
+            repositioning across all axes. Full autonomous decision loops with
+            sub-millisecond response latency.
+          </p>
+          <span class="cap-tag">CAPABILITY-GRADE: TIER-1</span>
+        </div>
+        <div class="cap-card">
+          <span class="cap-icon">🔒</span>
+          <div class="cap-title">SOVEREIGN THREAT NEUTRALIZATION</div>
+          <p class="cap-desc">
+            Integrated perimeter denial systems operate autonomously within
+            classified engagement envelopes. Zero operator dependency in contested
+            electromagnetic environments.
+          </p>
+          <span class="cap-tag">CAPABILITY-GRADE: TIER-1</span>
+        </div>
+        <div class="cap-card">
+          <span class="cap-icon">📡</span>
+          <div class="cap-title">PERSISTENT ISR INTEGRATION</div>
+          <p class="cap-desc">
+            Full-spectrum intelligence, surveillance, and reconnaissance fusion.
+            Passive and active sensor arrays feeding real-time battlefield
+            situational awareness to command echelons.
+          </p>
+          <span class="cap-tag">CAPABILITY-GRADE: TIER-2</span>
+        </div>
+        <div class="cap-card">
+          <span class="cap-icon">🌐</span>
+          <div class="cap-title">RESILIENT MESH COMMUNICATIONS</div>
+          <p class="cap-desc">
+            Proprietary low-intercept communications architecture enabling
+            multi-node coordination without centralized infrastructure dependency.
+            Hardened against adversarial jamming.
+          </p>
+          <span class="cap-tag">CAPABILITY-GRADE: TIER-2</span>
+        </div>
+        <div class="cap-card">
+          <span class="cap-icon">🔋</span>
+          <div class="cap-title">SUSTAINED OPERATIONAL ENDURANCE</div>
+          <p class="cap-desc">
+            Advanced power management subsystems extend mission duration beyond
+            conventional platform benchmarks. Proprietary energy conversion
+            architecture classified at source-material level.
+          </p>
+          <span class="cap-tag">CAPABILITY-GRADE: TIER-1</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTHORIZED PERSONNEL — TECHNICAL DIAGRAMS -->
+  <section id="diagrams">
+    <div class="max-container">
+      <div class="section-header">
+        <div class="section-eyebrow">// TECHNICAL ARCHITECTURE //</div>
+        <h2 class="section-title">SYSTEM DIAGRAMS</h2>
+        <div class="section-divider"></div>
+        <p style="margin-top:1rem;font-family:'Share Tech Mono',monospace;font-size:0.7rem;color:var(--zinc-600);letter-spacing:0.12em;">
+          ⚑ AUTHORIZED PERSONNEL ONLY — CONTENT REDACTED PENDING CLEARANCE VERIFICATION
+        </p>
+      </div>
+
+      <div class="authorized-container">
+        <!-- Diagrams (blurred) -->
+        <div class="diagram-grid" style="filter: blur(12px); pointer-events: none; user-select: none;">
+          <div class="diagram-card">
+            <div class="diagram-frame">
+              <div class="diagram-corner tl"></div>
+              <div class="diagram-corner tr"></div>
+              <div class="diagram-corner bl"></div>
+              <div class="diagram-corner br"></div>
+              <div class="diagram-redacted-label">[ PROPRIETARY SYSTEM ]<br>STRUCTURAL MATRIX — REDACTED</div>
+            </div>
+            <div class="diagram-info">
+              <div class="diagram-title">SYS-01 // Structural Matrix Overview</div>
+              <div class="diagram-desc">High-level conceptual frame. Detailed specifications redacted.</div>
+            </div>
+          </div>
+          <div class="diagram-card">
+            <div class="diagram-frame">
+              <div class="diagram-corner tl"></div>
+              <div class="diagram-corner tr"></div>
+              <div class="diagram-corner bl"></div>
+              <div class="diagram-corner br"></div>
+              <div class="diagram-redacted-label">[ PROPRIETARY SYSTEM ]<br>WAVE-STATE INTEGRITY — REDACTED</div>
+            </div>
+            <div class="diagram-info">
+              <div class="diagram-title">SYS-02 // Wave-State Integrity Module</div>
+              <div class="diagram-desc">Advanced oscillatory control architecture. Technical parameters classified.</div>
+            </div>
+          </div>
+          <div class="diagram-card">
+            <div class="diagram-frame">
+              <div class="diagram-corner tl"></div>
+              <div class="diagram-corner tr"></div>
+              <div class="diagram-corner bl"></div>
+              <div class="diagram-corner br"></div>
+              <div class="diagram-redacted-label">[ PROPRIETARY SYSTEM ]<br>PERIMETER DENIAL ARRAY — REDACTED</div>
+            </div>
+            <div class="diagram-info">
+              <div class="diagram-title">SYS-03 // Autonomous Perimeter Denial</div>
+              <div class="diagram-desc">Conceptual engagement envelope. Operational parameters withheld.</div>
+            </div>
+          </div>
+          <div class="diagram-card">
+            <div class="diagram-frame">
+              <div class="diagram-corner tl"></div>
+              <div class="diagram-corner tr"></div>
+              <div class="diagram-corner bl"></div>
+              <div class="diagram-corner br"></div>
+              <div class="diagram-redacted-label">[ PROPRIETARY SYSTEM ]<br>POWER ARCHITECTURE — REDACTED</div>
+            </div>
+            <div class="diagram-info">
+              <div class="diagram-title">SYS-04 // Proprietary Power Architecture</div>
+              <div class="diagram-desc">Source-material classification applied. Conceptual frame only.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blur/Lock Overlay -->
+        <div class="auth-blur-overlay">
+          <div class="lock-icon">🔐</div>
+          <div class="lock-label">AUTHORIZED PERSONNEL ONLY</div>
+          <div class="lock-sublabel">CLEARANCE VERIFICATION REQUIRED TO VIEW TECHNICAL CONTENT</div>
+          <div class="lock-cta" onclick="document.getElementById('entry-gate').style.display='flex';">
+            ▸ SUBMIT ACCESS REQUEST
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPCOMING TECH — TEASER ONLY -->
+  <section id="upcoming" style="background: rgba(18,18,20,0.6);">
+    <div class="max-container">
+      <div class="section-header">
+        <div class="section-eyebrow">// DEVELOPMENT PIPELINE //</div>
+        <h2 class="section-title">UPCOMING TECHNOLOGY</h2>
+        <div class="section-divider"></div>
+        <p style="margin-top:1rem;font-family:'Share Tech Mono',monospace;font-size:0.7rem;color:var(--zinc-600);letter-spacing:0.12em;">
+          ⚑ TEASER ONLY — FULL SPECIFICATIONS WITHHELD — AUTHORIZED DISCLOSURE PENDING
+        </p>
+      </div>
+
+      <div class="teaser-grid">
+        <div class="teaser-card">
+          <div class="teaser-status">▸ STATUS: IN DEVELOPMENT — ETA UNDISCLOSED</div>
+          <div class="teaser-title">NEXT-GEN STRUCTURAL PLATFORM</div>
+          <p class="teaser-desc">
+            A proprietary structural advancement enabling capabilities beyond
+            current platform-class benchmarks.
+            <br><span class="teaser-redacted">████████████████████████████████</span>
+          </p>
+        </div>
+        <div class="teaser-card">
+          <div class="teaser-status">▸ STATUS: PROTOTYPE PHASE — CLASSIFIED</div>
+          <div class="teaser-title">AUTONOMOUS SWARM COORDINATION</div>
+          <p class="teaser-desc">
+            Multi-unit mesh coordination without ground-control dependency.
+            Operating parameters and formation algorithms are
+            <span class="teaser-redacted">██████████████████████</span>.
+          </p>
+        </div>
+        <div class="teaser-card">
+          <div class="teaser-status">▸ STATUS: PENDING PATENT — IP PROTECTED</div>
+          <div class="teaser-title">ENERGY CONVERSION SUBSYSTEM</div>
+          <p class="teaser-desc">
+            A breakthrough energy architecture currently under patent review.
+            Material composition and conversion methodology
+            <span class="teaser-redacted">█████████████████████████████</span>.
+          </p>
+        </div>
+        <div class="teaser-card">
+          <div class="teaser-status">▸ STATUS: CONCEPT VALIDATION — DOD INTEREST</div>
+          <div class="teaser-title">ADVERSARIAL COUNTERMEASURES SYSTEM</div>
+          <p class="teaser-desc">
+            Full-spectrum electronic and kinetic denial platform.
+            Engagement logic and technical specifications
+            <span class="teaser-redacted">████████████████████████████████████</span>.
+          </p>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:3rem;">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:0.7rem;color:var(--zinc-600);letter-spacing:0.15em;line-height:1.9;">
+          Complete pipeline specifications available exclusively to verified government<br>
+          and DOD partners following clearance confirmation.<br>
+          <span style="color:var(--violet-400);">▸ Submit access request via the Entry Gate to proceed.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="max-container" style="text-align:center;">
+      <div class="section-header">
+        <div class="section-eyebrow">// SECURE CONTACT //</div>
+        <h2 class="section-title">REQUEST A BRIEFING</h2>
+        <div class="section-divider"></div>
+      </div>
+      <p style="color:var(--zinc-400);max-width:540px;margin:0 auto 2.5rem;line-height:1.7;font-size:0.9rem;">
+        Briefings are available exclusively to verified government agencies, DOD
+        prime contractors, and cleared research institutions.
+        All inquiries routed through secure channels only.
+      </p>
+      <a href="#" class="btn-primary" onclick="document.getElementById('entry-gate').style.display='flex';return false;">
+        ▸ INITIATE SECURE BRIEFING REQUEST
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        KPS — KINETIC PERIMETER SYSTEMS
+        <p>DEFENSE TECHNOLOGY // PROPRIETARY &amp; CONTROLLED</p>
+        <p style="margin-top:0.2rem;">McMinnville, TN — CONUS OPERATIONS</p>
+      </div>
+
+      <!-- KPS COIN BADGE -->
+      <div class="kps-coin-badge">
+        <div class="coin-badge-alpha">ALPHA</div>
+        <span class="coin-badge-icon">🪙</span>
+        <span class="coin-badge-title">KPS COIN [ALPHA-RELEASE]</span>
+        <span class="coin-badge-sub">NATIVE CRYPTO-LIQUIDITY COMING SOON</span>
+        <span style="display:block;font-family:'Share Tech Mono',monospace;font-size:0.55rem;color:var(--zinc-700);margin-top:0.3rem;letter-spacing:0.1em;">
+          SOVEREIGN UTILITY TOKEN — KPS ECOSYSTEM
+        </span>
+      </div>
+
+      <div class="footer-legal">
+        <div>CONTROLLED TECHNICAL INFORMATION</div>
+        <div>18 U.S.C. § 793 APPLIES</div>
+        <div style="margin-top:0.5rem;">ALL SYSTEMS PROPRIETARY &amp; IP-PROTECTED</div>
+        <div>UNAUTHORIZED DISCLOSURE PROHIBITED</div>
+        <div style="margin-top:0.5rem;color:var(--zinc-800);">© 2024–2026 KINETIC PERIMETER SYSTEMS</div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>SESSION MONITORING ACTIVE // ALL TRAFFIC LOGGED</span>
+      <span id="footer-session"></span>
+      <span>KPS-SECURE-PORTAL v2.6 // CLEARANCE REQUIRED</span>
+    </div>
+  </footer>
+
+</div><!-- /main-site -->
+
+<script>
+  // ─── BIOMETRIC / VISITOR TRACKING CONSOLE LOG ───
+  (function() {
+    const sid = 'KPS-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).slice(2,7).toUpperCase();
+    const ts  = new Date().toISOString();
+    console.group('%c⚑ KPS SECURE PORTAL — VISITOR TRACKING ACTIVE', 'color:#22d3ee;font-family:monospace;font-weight:bold;font-size:13px;');
+    console.log('%cSession ID    : %c' + sid,            'color:#a1a1aa;font-family:monospace;', 'color:#22d3ee;font-family:monospace;');
+    console.log('%cTimestamp     : %c' + ts,             'color:#a1a1aa;font-family:monospace;', 'color:#67e8f9;font-family:monospace;');
+    console.log('%cBiometric TID : %c[PENDING CAPTURE]', 'color:#a1a1aa;font-family:monospace;', 'color:#a78bfa;font-family:monospace;');
+    console.log('%cIP Origin     : %c[CLOUDFLARE ANALYTICS — ACTIVE WHEN TOKEN SET]', 'color:#a1a1aa;font-family:monospace;', 'color:#a78bfa;font-family:monospace;');
+    console.log('%cGeo Data      : %c[TRACKING VIA CF BEACON]', 'color:#a1a1aa;font-family:monospace;', 'color:#a78bfa;font-family:monospace;');
+    console.log('%cReferrer      : %c' + (document.referrer || 'DIRECT'), 'color:#a1a1aa;font-family:monospace;', 'color:#a78bfa;font-family:monospace;');
+    console.log('%cUser Agent    : %c' + navigator.userAgent, 'color:#a1a1aa;font-family:monospace;', 'color:#71717a;font-family:monospace;');
+    console.log('%c⚠  Unauthorized access is a federal offense — 18 U.S.C. § 793', 'color:#ef4444;font-family:monospace;font-weight:bold;');
+    console.groupEnd();
+    document.getElementById('session-id').textContent = sid;
+    const fe = document.getElementById('footer-session');
+    if (fe) fe.textContent = 'SESSION: ' + sid;
+    window._KPS_SESSION = sid;
+  })();
+
+  // ─── BOOT SEQUENCE ───
+  const bootLines = [
+    'KPS-OS v2.6 INITIALIZING...',
+    'LOADING SECURE KERNEL MODULE...',
+    'CHECKING AUTHORIZATION MATRIX...',
+    'SCANNING PERIMETER SENSORS...',
+    'ESTABLISHING ENCRYPTED CHANNEL...',
+    'VERIFYING CLEARANCE TOKENS...',
+    'STATUS: ACCESS DENIED — AUTHENTICATION REQUIRED',
+  ];
+
+  let lineIdx = 0;
+  const linesEl = document.getElementById('boot-lines');
+  const barEl   = document.getElementById('boot-bar');
+
+  function addBootLine() {
+    if (lineIdx >= bootLines.length) return;
+    const el = document.createElement('div');
+    el.className = 'boot-line';
+    el.textContent = '> ' + bootLines[lineIdx];
+    el.style.animationDelay = '0s';
+    el.style.color = lineIdx === bootLines.length - 1 ? '#ef4444' : '';
+    linesEl.appendChild(el);
+    barEl.style.width = ((lineIdx + 1) / bootLines.length * 100) + '%';
+    lineIdx++;
+    if (lineIdx < bootLines.length) {
+      setTimeout(addBootLine, 280);
+    } else {
+      setTimeout(showGate, 1400);
+    }
+  }
+
+  function showGate() {
+    const boot = document.getElementById('boot-screen');
+    boot.classList.add('fade-out');
+    setTimeout(() => { boot.style.display = 'none'; }, 900);
+  }
+
+  setTimeout(addBootLine, 400);
+
+  // ─── CAPTCHA TOGGLE ───
+  let captchaChecked = false;
+  function toggleCaptcha() {
+    captchaChecked = !captchaChecked;
+    document.getElementById('captcha-check').classList.toggle('checked', captchaChecked);
+  }
+
+  // ─── ACCESS REQUEST HANDLER ───
+  function requestAccess() {
+    const name  = document.getElementById('f-name').value.trim();
+    const org   = document.getElementById('f-org').value.trim();
+    const role  = document.getElementById('f-role').value;
+    const fedid = document.getElementById('f-fedid').value.trim();
+
+    if (!name || !org || !role || !fedid) {
+      flashError('ALL FIELDS ARE REQUIRED TO REQUEST ACCESS.');
+      return;
+    }
+    if (fedid.length < 5) {
+      flashError('INVALID FEDERAL ID FORMAT. ENTER VALID UEI OR CAGE CODE.');
+      return;
+    }
+    if (!captchaChecked) {
+      flashError('SECURITY VERIFICATION INCOMPLETE.');
+      return;
+    }
+
+    console.log('%c⚑ KPS ACCESS REQUEST SUBMITTED', 'color:#22d3ee;font-family:monospace;font-weight:bold;');
+    console.table({ Name: name, Organization: org, Role: role, FederalID: fedid, Session: window._KPS_SESSION });
+
+    const btn = document.querySelector('.gate-submit-btn');
+    btn.textContent = '⏳ REQUEST SUBMITTED — PENDING REVIEW';
+    btn.disabled = true;
+    btn.style.opacity = '0.6';
+    btn.style.cursor  = 'not-allowed';
+
+    const note = document.querySelector('.gate-note');
+    note.innerHTML = '<span style="color:var(--cyan-400);">✔ Your request has been logged and forwarded to the KPS Authorization Office. You will be contacted via secure channel within 1–3 business days.</span>';
+
+    // Demo: grant access after short delay (remove in production)
+    setTimeout(() => {
+      document.getElementById('entry-gate').style.display = 'none';
+      document.getElementById('main-site').style.display  = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 2200);
+  }
+
+  function flashError(msg) {
+    let err = document.getElementById('gate-error');
+    if (!err) {
+      err = document.createElement('div');
+      err.id = 'gate-error';
+      err.style.cssText = 'background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.5);border-radius:4px;padding:0.7rem 1rem;font-family:"Share Tech Mono",monospace;font-size:0.7rem;color:#fca5a5;letter-spacing:0.08em;margin-bottom:1rem;text-align:center;';
+      document.querySelector('.gate-submit-btn').before(err);
+    }
+    err.textContent = '⚠ ' + msg;
+    err.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
