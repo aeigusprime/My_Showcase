@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Public project overview for the Kinetic Perimeter Systems shipboard interior panel concept and proposed prototype evaluation." />
+  <title>Shipboard Interior Panel — Kinetic Perimeter Systems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #09090b;
+      --surface: #111318;
+      --line: #2a2e36;
+      --text: #e4e4e7;
+      --muted: #a1a1aa;
+      --cyan: #22d3ee;
+      --violet: #a78bfa;
+      --amber: #f0c674;
+      --display: 'Orbitron', sans-serif;
+      --body: 'Inter', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--body); }
+    a { color: inherit; }
+    a:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+    .wrap { width: min(940px, calc(100% - 40px)); margin: 0 auto; }
+    header { border-bottom: 1px solid var(--line); }
+    .nav { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: flex; gap: 10px; align-items: center; text-decoration: none; }
+    .mark { color: var(--cyan); font-size: 24px; }
+    .brand-name { font: 700 12px var(--display); letter-spacing: .07em; }
+    .brand-sub { margin-top: 3px; color: var(--muted); font-size: 9px; letter-spacing: .12em; }
+    .nav a:last-child { color: var(--muted); font-size: 11px; }
+    main { padding: 60px 0 70px; }
+    .eyebrow { color: var(--cyan); font: 10px/1.5 monospace; letter-spacing: .16em; text-transform: uppercase; }
+    h1 { margin: 10px 0 18px; font: 700 clamp(28px,5vw,47px)/1.2 var(--display); }
+    h2 { margin: 0 0 13px; font: 700 17px var(--display); letter-spacing: .025em; }
+    p { color: #c1c1c8; font-size: 14px; line-height: 1.8; }
+    .lede { max-width: 800px; margin: 0; font-size: 16px; }
+    .stage { display: inline-flex; gap: 9px; align-items: center; margin: 22px 0 0; padding: 10px 12px; border: 1px solid rgba(240,198,116,.27); border-radius: 5px; background: rgba(240,198,116,.06); color: #f4d99e; font-size: 11px; }
+    .stage i { width: 7px; height: 7px; border-radius: 50%; background: var(--amber); }
+    .section { margin-top: 42px; padding: 24px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+    .section > p:last-child { margin-bottom: 0; }
+    .questions { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; margin-top: 19px; }
+    .question { padding: 15px; border: 1px solid var(--line); border-radius: 6px; background: #0c0e13; }
+    .question strong { display: block; margin-bottom: 6px; color: var(--cyan); font-size: 12px; }
+    .question span { color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .contact { border-color: rgba(34,211,238,.25); }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .button { display: inline-flex; min-height: 42px; align-items: center; justify-content: center; padding: 10px 14px; border: 1px solid var(--line); border-radius: 5px; background: #191c23; font-size: 11px; font-weight: 700; text-decoration: none; }
+    .button:hover { border-color: var(--cyan); color: var(--cyan); }
+    .button.primary { border-color: var(--cyan); background: var(--cyan); color: #071014; }
+    .button.primary:hover { background: #8aeaf0; }
+    .small { color: #888891; font-size: 10px; line-height: 1.7; }
+    footer { padding: 22px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+    @media (max-width: 600px) {
+      .wrap { width: min(100% - 30px, 500px); }
+      main { padding: 43px 0 52px; }
+      .section { margin-top: 25px; padding: 17px; }
+      .questions { grid-template-columns: 1fr; }
+      .lede { font-size: 14px; }
+      .actions .button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="index.html">
+        <span class="mark" aria-hidden="true">⬡</span>
+        <span><span class="brand-name">KINETIC PERIMETER SYSTEMS</span><span class="brand-sub">PUBLIC PROCUREMENT INFORMATION</span></span>
+      </a>
+      <a href="index.html">← Home</a>
+    </div>
+  </header>
+  <main class="wrap">
+    <div class="eyebrow">Project overview · For program offices and technical evaluators</div>
+    <h1>Shipboard Interior Panel</h1>
+    <p class="lede">Kinetic Perimeter Systems is developing a panel concept for shipboard interior partitions. KPS seeks direct engagement with DoD program offices and technical evaluators to define the requirements for a physical prototype and a side-by-side comparison with a conventional marine joiner panel.</p>
+    <div class="stage"><i aria-hidden="true"></i>Concept developed. Physical prototype and testing pending.</div>
+
+    <section class="section">
+      <h2>Current work and proposed next step</h2>
+      <p>The current stage is concept development. A physical prototype and testing are pending. KPS is seeking a program-office conversation to define the requirements, comparison conditions, and appropriate evaluation approach before prototype work proceeds.</p>
+      <p>The proposed evaluation would compare a prototype panel with a conventional marine joiner panel. No performance results, qualification, award, Navy endorsement, production capacity, or delivery date are claimed.</p>
+    </section>
+
+    <section class="section">
+      <h2>Evaluation questions</h2>
+      <p>These are questions for the program office and technical evaluators to scope—not claims of achieved performance.</p>
+      <div class="questions">
+        <div class="question"><strong>Fire behavior</strong><span>Which fire-performance requirements, test methods, and comparison conditions apply to the intended partition use?</span></div>
+        <div class="question"><strong>Smoke</strong><span>Which smoke-related measures and test reports would the evaluation require?</span></div>
+        <div class="question"><strong>Mass per unit area</strong><span>How should panel mass per unit area be measured and compared against the selected conventional marine joiner panel?</span></div>
+        <div class="question"><strong>Handling and installation</strong><span>Which practical handling, fit-up, installation steps, and representative conditions should evaluators assess side by side?</span></div>
+      </div>
+    </section>
+
+    <section class="section contact">
+      <h2>Discuss a prototype evaluation</h2>
+      <p>Contact KPS using the business email listed in the existing capability statement. Please identify the relevant performance requirements, preferred test reports or sample quantities, and the prototype evaluation or funding pathway your office uses. Do not include sensitive information or attach files.</p>
+      <div class="actions">
+        <a class="button primary" href="mailto:kineticperimetersystems@outlook.com?subject=Discuss%20a%20prototype%20evaluation&amp;body=Please%20share%20the%20relevant%20performance%20requirements%2C%20preferred%20test%20reports%20or%20sample%20quantities%2C%20and%20the%20prototype%20evaluation%20or%20funding%20pathway%20your%20office%20uses.%20Please%20do%20not%20include%20sensitive%20information%20or%20attach%20files.">Email KPS</a>
+        <a class="button" href="capability.html">View capability statement (HTML)</a>
+      </div>
+      <p class="small">KPS is the planned manufacturer, subject to requirements and evaluation. No approved public-release PDF or confirmed SAM.gov profile URL is currently included with this site.</p>
+    </section>
+  </main>
+  <footer><div class="wrap">Kinetic Perimeter Systems LLC · Public information only. No owner workspace is hosted here.</div></footer>
+</body>
+</html>
