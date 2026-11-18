@@ -797,92 +797,45 @@
   <div class="boot-logo">KPS — KINETIC PERIMETER SYSTEMS</div>
   <div id="boot-lines" style="display:flex;flex-direction:column;gap:0.4rem;width:min(420px,80vw)"></div>
   <div class="boot-bar-wrap"><div class="boot-bar-fill" id="boot-bar"></div></div>
-  <div class="boot-denied">⛔ ACCESS DENIED</div>
+  <div class="boot-denied">PUBLIC CONTENT ONLY</div>
 </div>
 
 <!-- ════════════════════════════════════════════════════════════════
-     ENTRY GATE OVERLAY
+     PUBLIC SITE NOTICE — THIS IS NOT AN AUTHENTICATION GATE
 ════════════════════════════════════════════════════════════════ -->
 <div id="entry-gate">
   <div class="gate-header">
-    <div class="gate-classified-banner">⚑ RESTRICTED ACCESS PORTAL ⚑</div>
-    <div class="gate-title">SECURE ACCESS PROTOCOL<br>KINETIC PERIMETER SYSTEMS</div>
-    <div class="gate-subtitle">// AUTHORIZATION REQUIRED — GOVERNMENT &amp; DOD PARTNERS ONLY //</div>
+    <div class="gate-classified-banner">PUBLIC WEBSITE · NO SECURE WORKSPACE</div>
+    <div class="gate-title">KINETIC PERIMETER SYSTEMS</div>
+    <div class="gate-subtitle">// PUBLIC INFORMATION ONLY //</div>
   </div>
 
   <div class="gate-scan-line"></div>
 
   <div class="gate-policy">
-    <strong>⚠ ACCESS RESTRICTION NOTICE ⚠</strong>
-    ACCESS RESTRICTED TO VERIFIED GOVERNMENT AGENCIES AND DOD PARTNERS ONLY.
-    Unauthorized access to proprietary technical information is prohibited. This site describes KPS trade secrets protected under state and federal law. All access attempts are logged. By proceeding, you
-    confirm your identity and authorization level.
+    <strong>IMPORTANT · THIS PAGE DOES NOT CONTROL ACCESS</strong>
+    This public website has no sign-in, identity verification, visitor tracking, or protected data area.
+    Anything published here can be viewed and copied. Do not enter or publish confidential, proprietary,
+    export-controlled, or otherwise sensitive information. The owner-only workstation is not available here.
   </div>
 
   <div class="gate-form-card">
-    <div class="form-section-title">▸ Identity Verification — Authorized Personnel Only</div>
-
-    <div class="form-group">
-      <label>Full Legal Name <span class="required">*</span></label>
-      <input type="text" id="f-name" placeholder="LAST, FIRST M." autocomplete="off" />
-    </div>
-
-    <div class="form-group">
-      <label>Organization / Agency <span class="required">*</span></label>
-      <input type="text" id="f-org" placeholder="e.g. U.S. DEPARTMENT OF DEFENSE" autocomplete="off" />
-    </div>
-
-    <div class="form-group">
-      <label>Role / Title <span class="required">*</span></label>
-      <select id="f-role">
-        <option value="">— SELECT ROLE —</option>
-        <option>Contracting Officer (CO)</option>
-        <option>Program Manager — DoD</option>
-        <option>Defense Research Analyst</option>
-        <option>Intelligence Officer</option>
-        <option>Systems Engineer — Defense</option>
-        <option>Executive — Government Agency</option>
-        <option>Authorized DOD Contractor</option>
-        <option>Other — Verified Government Personnel</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label>Federal ID — UEI or CAGE Code <span class="required">*</span></label>
-      <input type="text" id="f-fedid" placeholder="e.g. ABC123DEF456 or 7X8Y9" autocomplete="off" maxlength="20" style="text-transform:uppercase;" />
-    </div>
-
-    <!-- hCaptcha Placeholder -->
-    <div style="margin-bottom:0.5rem;">
-      <label style="font-family:'Share Tech Mono',monospace;font-size:0.68rem;color:var(--zinc-400);letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">
-        Security Verification <span style="color:var(--cyan-400);">*</span>
-      </label>
-    </div>
-    <div class="captcha-placeholder" id="captcha-box">
-      <div class="captcha-checkbox" id="captcha-check" onclick="toggleCaptcha()"></div>
-      <span class="captcha-label">I am an authorized government representative</span>
-      <div class="captcha-brand">hCAPTCHA<br><span style="color:var(--zinc-700);">SECURE VERIFY</span></div>
-    </div>
-
-    <button class="gate-submit-btn" onclick="requestAccess()">
-      ▸ REQUEST AUTHORIZED ACCESS
+    <div class="form-section-title">PUBLIC SITE NOTICE</div>
+    <button class="gate-submit-btn" onclick="enterPublicSite()">
+      ▸ CONTINUE TO PUBLIC WEBSITE
     </button>
-
     <div class="gate-note">
-      This portal is monitored for security. Session metadata may be logged. Requests are reviewed within 1-3 business days.
+      This page itself does not collect visitor profile data or submit access requests.
+      The hosting provider may process standard request logs; see its terms for details.
     </div>
     <a href="accelerator.html" style="display:block;margin-top:1rem;text-align:center;font-family:'Share Tech Mono',monospace;font-size:0.68rem;color:var(--cyan-400);letter-spacing:0.06em;">
-      Explore the public KPS Accelerator prototype — fictional data only
+      Open the public KPS Accelerator prototype — fictional data only
     </a>
-  </div>
-
-  <div style="margin-top:1.5rem;font-family:'Share Tech Mono',monospace;font-size:0.62rem;color:var(--zinc-700);text-align:center;letter-spacing:0.1em;">
-    SESSION ID: <span id="session-id"></span> &nbsp;|&nbsp; TRACKING ACTIVE
   </div>
 </div>
 
 <!-- ════════════════════════════════════════════════════════════════
-     MAIN SITE — VISIBLE ONLY AFTER GATE BYPASS (demo mode)
+     PUBLIC SITE CONTENT — NOT ACCESS-CONTROLLED
 ════════════════════════════════════════════════════════════════ -->
 <div id="main-site">
 
@@ -1177,9 +1130,8 @@
     </div>
 
     <div class="footer-bottom">
-      <span>SESSION MONITORING ACTIVE // ALL TRAFFIC LOGGED</span>
-      <span id="footer-session"></span>
-      <span>KPS-SECURE-PORTAL v2.6</span>
+      <span>PUBLIC WEBSITE // NO PRIVATE WORKSPACE AVAILABLE</span>
+      <span>KPS PUBLIC INFORMATION</span>
     </div>
   </footer>
 
